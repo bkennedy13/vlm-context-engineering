@@ -1,0 +1,29 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+*.egg-info/
+
+# Data files
+data/*.mp4
+data/*.webm
+data/*.mkv
+data/*.json
+data/*.info.json
+
+# Model weights (if you download any locally)
+*.safetensors
+*.bin
+*.pth
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
