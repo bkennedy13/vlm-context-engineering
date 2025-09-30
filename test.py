@@ -1,4 +1,5 @@
 from baseline.baseline_rag import VideoRAGBaseline
+from baseline.vlm_answerer import VLMAnswerer
 from baseline.video_utils import load_video_mme_dataset, get_short_visual_samples
 from data.video_manager import VideoManager
 from pathlib import Path
@@ -31,10 +32,12 @@ def test_with_sample():
         print("Could not download video")
         return
     
-    # Test with the question
+    # Initialize models
     rag = VideoRAGBaseline()
-    question = sample['question']
+    vlm = VLMAnswerer()
     
+    # Process video and retrieve relevant chunks
+    question = sample['question']
     chunks, similarities = rag.process_video(video_path, question, k=3)
     
     if chunks is not None:
@@ -42,7 +45,14 @@ def test_with_sample():
         print(f"Options: {sample['options']}")
         print(f"Correct answer: {sample['answer']}")
         print(f"Retrieved {len(chunks)} relevant chunks with similarities: {similarities}")
-        print("Next step: Pass these chunks to VLM for answer generation")
+        
+        # Get VLM answer
+        print("\nQuerying VLM...")
+        predicted_answer = vlm.answer_question(chunks, question, sample['options'])
+        
+        print(f"\nVLM Predicted: {predicted_answer}")
+        print(f"Correct Answer: {sample['answer']}")
+        print(f"Result: {'✓ CORRECT' if predicted_answer == sample['answer'] else '✗ INCORRECT'}")
     else:
         print("No chunks retrieved")
 

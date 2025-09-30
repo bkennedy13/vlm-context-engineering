@@ -4,14 +4,16 @@ torchvision>=0.15.0
 open-clip-torch>=2.20.0
 numpy>=1.24.0
 
-# Video processing
-#opencv-python>=4.8.0
-
 # Video processing (headless version for CPU-only systems)
 opencv-python-headless>=4.8.0
 
 # Image processing
 Pillow>=9.0.0
+
+# VLM and transformers
+transformers>=4.37.0
+accelerate>=0.26.0
+qwen-vl-utils
 
 # Data handling
 yt-dlp>=2023.7.6
@@ -19,5 +21,4 @@ requests>=2.31.0
 datasets>=2.14.0
 
 # Utils
-pathlib
 tqdm
