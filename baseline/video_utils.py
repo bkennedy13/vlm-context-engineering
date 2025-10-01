@@ -86,31 +86,42 @@ def create_chunks(frames, chunk_size=3):
     return chunks
 
 def download_youtube_video(youtube_id, output_dir="data"):
-    """Simple video download - just get 360p video-only"""
+    """Download YouTube video with fallback formats"""
     output_path = Path(output_dir)
     output_path.mkdir(exist_ok=True)
     
-    ydl_opts = {
-        'format': '134',  # 640x360 mp4 video-only - perfect for VLM
-        'outtmpl': str(output_path / f'{youtube_id}.%(ext)s'),
-        'no_warnings': True,
-    }
+    # Try formats in order: 360p video-only, then any video-only, then best overall
+    format_options = [
+        '134',              # 640x360 mp4 video-only (preferred)
+        '243',              # 640x360 webm video-only (alternative)
+        '160',              # 256x144 mp4 video-only (lower quality fallback)
+        'bestvideo[ext=mp4][height<=720]',  # Best mp4 video-only up to 720p
+        'best[height<=720]'  # Last resort with audio
+    ]
     
-    try:
-        with yt_dlp.YoutubeDL(ydl_opts) as ydl:
-            url = f"https://www.youtube.com/watch?v={youtube_id}"
-            ydl.download([url])
-            
-        # Find the downloaded file
-        video_files = list(output_path.glob(f"{youtube_id}.*"))
-        for f in video_files:
-            if f.suffix in ['.mp4', '.webm', '.mkv']:
-                print(f"Downloaded: {f}")
-                return str(f)
-                
-    except Exception as e:
-        print(f"Download failed: {e}")
+    for fmt in format_options:
+        ydl_opts = {
+            'format': fmt,
+            'outtmpl': str(output_path / f'{youtube_id}.%(ext)s'),
+            'no_warnings': True,
+            'quiet': True,
+        }
         
+        try:
+            with yt_dlp.YoutubeDL(ydl_opts) as ydl:
+                url = f"https://www.youtube.com/watch?v={youtube_id}"
+                ydl.download([url])
+                
+            # Find downloaded file
+            video_files = list(output_path.glob(f"{youtube_id}.*"))
+            for f in video_files:
+                if f.suffix in ['.mp4', '.webm', '.mkv']:
+                    print(f"Downloaded: {f} (format: {fmt})")
+                    return str(f)
+        except:
+            continue
+    
+    print(f"All formats failed for {youtube_id}")
     return None
 
 def get_video_info(video_path):
@@ -134,3 +145,49 @@ def get_video_info(video_path):
         'resolution': (width, height),
         'size_mb': Path(video_path).stat().st_size / (1024 * 1024)
     }
+
+def create_evaluation_subset(dataset, n_short=20, n_medium=20, n_long=10, seed=42):
+    """Create balanced eval subset across durations"""
+    import random
+    random.seed(seed)
+    
+    eval_samples = []
+    duration_targets = {
+        'short': n_short,
+        'medium': n_medium,
+        'long': n_long
+    }
+    
+    for duration, n_videos in duration_targets.items():
+        # Get all videos of this duration
+        duration_videos = {}
+        for item in dataset:
+            if item['duration'] == duration:
+                vid_id = item['video_id']
+                if vid_id not in duration_videos:
+                    duration_videos[vid_id] = []
+                duration_videos[vid_id].append({
+                    'video_id': item['video_id'],
+                    'youtube_id': item['videoID'],
+                    'url': item['url'],
+                    'question': item['question'],
+                    'options': item['options'],
+                    'answer': item['answer'],
+                    'task_type': item['task_type'],
+                    'question_id': item['question_id'],
+                    'duration': item['duration']
+                })
+        
+        # Sample n videos
+        video_ids = list(duration_videos.keys())
+        selected_ids = random.sample(video_ids, min(n_videos, len(video_ids)))
+        
+        # Add all questions for selected videos
+        for vid_id in selected_ids:
+            eval_samples.extend(duration_videos[vid_id])
+        
+        print(f"{duration}: {len(selected_ids)} videos")
+    
+    print(f"\nTotal: {len(set(s['video_id'] for s in eval_samples))} videos, {len(eval_samples)} questions")
+    
+    return eval_samples
