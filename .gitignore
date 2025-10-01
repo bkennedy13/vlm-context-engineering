@@ -28,3 +28,6 @@ data/*.info.json
 .DS_Store
 Thumbs.db
 *.ipynb
+
+# YouTube cookies for downloading videos
+youtube_cookies.txt
