@@ -27,3 +27,4 @@ data/*.info.json
 # OS
 .DS_Store
 Thumbs.db
+*.ipynb
