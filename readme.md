@@ -21,6 +21,7 @@ We're building on the AVAS (Agentic Video Analytics System) paper to perform a f
 | Long Video Accuracy | 43.3% |
 
 ![Task Accuracy](results/level1_task_accuracy.png)
+![Retrieval Inference](results/level1_timing.png)
 ![Duration Accuracy](results/level1_duration_accuracy.png)
 
 ## Current Status
