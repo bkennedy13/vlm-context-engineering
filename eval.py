@@ -181,6 +181,10 @@ def main():
     args = parser.parse_args()
     
     if args.level == 'baseline':
+        print("Running Level 1: Baseline RAG Evaluation")
         from baseline.baseline_rag import VideoRAGBaseline
         # run baseline eval
         results = run_baseline_evaluation()
+        
+if __name__ == "__main__":
+    main()
