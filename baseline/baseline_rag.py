@@ -60,11 +60,11 @@ class VideoRAGBaseline:
         similarities = np.dot(chunk_embeddings, query_embedding.T).flatten()
         
         # Get top-K indices
-        top_k_indices = np.argsort(similarities)[-k:][::-1]  # Descending order
+        top_k_indices = np.argsort(similarities)[-k:][::-1]
         
         return top_k_indices, similarities[top_k_indices]
     
-    def process_video(self, video_path, query, k=5):
+    def process_video(self, video_path, query, k=10):
         """Main pipeline: video -> frames -> chunks -> embeddings -> retrieval"""
         print(f"Processing video: {video_path}")
         print(f"Query: {query}")
@@ -78,14 +78,14 @@ class VideoRAGBaseline:
         chunks = create_chunks(frames, chunk_size=3)
         print(f"Created {len(chunks)} chunks")
         
-        # Embed chunks (average frames in each chunk)
+        # Embed chunks - only middle frame
         chunk_embeddings = []
         for chunk in chunks:
-            chunk_emb = self.embed_frames(chunk)
-            if len(chunk_emb) > 0:
-                # Average embeddings of frames in chunk
-                avg_embedding = np.mean(chunk_emb, axis=0)
-                chunk_embeddings.append(avg_embedding)
+            if len(chunk) > 0:
+                mid_idx = len(chunk) // 2
+                mid_frame_emb = self.embed_frames([chunk[mid_idx]])  # Single frame
+                if len(mid_frame_emb) > 0:
+                    chunk_embeddings.append(mid_frame_emb[0])  # Take first (only) embedding
         
         if not chunk_embeddings:
             return None, None

@@ -85,18 +85,23 @@ def create_chunks(frames, chunk_size=3):
         chunks.append(chunk)
     return chunks
 
-def download_youtube_video(youtube_id, output_dir="data"):
-    """Download YouTube video with fallback formats"""
+def download_youtube_video(youtube_id, output_dir="data", cookies_file=None):
+    """Download YouTube video with fallback formats and optional cookies"""
     output_path = Path(output_dir)
     output_path.mkdir(exist_ok=True)
     
-    # Try formats in order: 360p video-only, then any video-only, then best overall
+    # Set cookies path if available
+    if cookies_file is None:
+        cookies_file = Path(__file__).parent.parent / "youtube_cookies.txt"
+        if not cookies_file.exists():
+            cookies_file = None
+    
     format_options = [
         '134',              # 640x360 mp4 video-only (preferred)
         '243',              # 640x360 webm video-only (alternative)
         '160',              # 256x144 mp4 video-only (lower quality fallback)
-        'bestvideo[ext=mp4][height<=720]',  # Best mp4 video-only up to 720p
-        'best[height<=720]'  # Last resort with audio
+        'bestvideo[ext=mp4][height<=720]',
+        'best[height<=720]'
     ]
     
     for fmt in format_options:
@@ -107,12 +112,15 @@ def download_youtube_video(youtube_id, output_dir="data"):
             'quiet': True,
         }
         
+        # Add cookies if available
+        if cookies_file:
+            ydl_opts['cookiefile'] = str(cookies_file)
+        
         try:
             with yt_dlp.YoutubeDL(ydl_opts) as ydl:
                 url = f"https://www.youtube.com/watch?v={youtube_id}"
                 ydl.download([url])
                 
-            # Find downloaded file
             video_files = list(output_path.glob(f"{youtube_id}.*"))
             for f in video_files:
                 if f.suffix in ['.mp4', '.webm', '.mkv']:

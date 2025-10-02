@@ -5,7 +5,7 @@ from pathlib import Path
 # Add parent directory to path
 sys.path.append(str(Path(__file__).parent.parent))
 
-from data.video_manager import VideoManager
+from shared.video_manager import VideoManager
 from tqdm import tqdm
 
 def download_eval_videos():
