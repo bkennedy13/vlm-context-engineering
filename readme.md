@@ -1,6 +1,6 @@
 # VLM Context Engineering
 
-Research project investigating how different context management strategies affect vision-language model (VLM) performance on long-video question answering.
+Research project investigating how different context management strategies affect vision-language model (VLM) performance on video question answering.
 
 ## Project Overview
 
