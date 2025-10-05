@@ -4,32 +4,39 @@ from qwen_vl_utils import process_vision_info
 from PIL import Image
 import numpy as np
 import sys
+import pickle
 from pathlib import Path
 sys.path.append(str(Path(__file__).parent.parent))
 
 class SemanticVLMAnswerer:  
-    def __init__(self, model_name="Qwen/Qwen2.5-VL-7B-Instruct", 
-                similarity_threshold=0.65, load_model=True):
-        self.similarity_threshold = similarity_threshold
+    def __init__(self, model_name="Qwen/Qwen2.5-VL-7B-Instruct"):
+        """Initialize 7B VLM for answering"""
+        print(f"Loading Semantic VLM: {model_name}")
         self.device = "cuda" if torch.cuda.is_available() else "cpu"
         
-        # Always set cache_dir regardless of load_model
-        self.cache_dir = Path("data/semantic_cache")
-        self.cache_dir.mkdir(parents=True, exist_ok=True)
+        # Load 7B answering model
+        self.model = Qwen2_5_VLForConditionalGeneration.from_pretrained(
+            model_name, torch_dtype=torch.bfloat16, device_map="auto"
+        )
+        self.processor = AutoProcessor.from_pretrained(model_name)
+        print(f"Semantic VLM loaded on {self.device}")
+    
+    def answer_from_video(self, video_path, question, options, k=10, semantic_rag=None):
+        """Main entry point: retrieve from cache and answer"""
+        if semantic_rag is None:
+            raise ValueError("Must provide SemanticRAG instance for retrieval")
+            
+        # Use SemanticRAG's retrieval
+        chunks, similarities, timing = semantic_rag.process_video(video_path, question, k)
         
-        if load_model:
-            print(f"Loading Semantic VLM: {model_name}")
-            self.model = Qwen2_5_VLForConditionalGeneration.from_pretrained(
-                model_name,
-                torch_dtype=torch.bfloat16,
-                device_map="auto"
-            )
-            self.processor = AutoProcessor.from_pretrained(model_name)
-            print(f"Semantic VLM loaded on {self.device}")
-        else:
-            print("Semantic RAG initialized without model (cache-only mode)")
-            self.model = None
-            self.processor = None
+        # Load descriptions from cache
+        cache_path = semantic_rag._get_cache_path(video_path)
+        with open(cache_path, 'rb') as f:
+            cache_data = pickle.load(f)
+        descriptions = cache_data['semantic_descriptions']
+        
+        # Answer using retrieved chunks
+        return self.answer_question(chunks, similarities, descriptions, question, options)
     
     def _select_chunks_adaptively(self, similarities, min_chunks=1, max_chunks=3, gap_threshold=0.05):
         """

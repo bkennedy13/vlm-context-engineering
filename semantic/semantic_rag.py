@@ -14,8 +14,7 @@ from semantic.description_generator import DescriptionGenerator
 from semantic.semantic_chunker import SemanticChunker
 
 class SemanticRAG:
-    def __init__(self, model_name="Qwen/Qwen2.5-VL-2B-Instruct", 
-                 similarity_threshold=0.65, load_model=True):
+    def __init__(self, similarity_threshold=0.65, load_model=True):
         self.similarity_threshold = similarity_threshold
         self.device = "cuda" if torch.cuda.is_available() else "cpu"
         
@@ -24,18 +23,25 @@ class SemanticRAG:
         self.cache_dir.mkdir(parents=True, exist_ok=True)
         
         if load_model:
-            print(f"Loading Semantic VLM: {model_name}")
-            self.model = Qwen2_5_VLForConditionalGeneration.from_pretrained(
-                model_name,
-                torch_dtype=torch.bfloat16,
-                device_map="auto"
-            )
-            self.processor = AutoProcessor.from_pretrained(model_name)
-            print(f"Semantic VLM loaded on {self.device}")
+            # Full mode - load all models
+            print("Loading description generator...")
+            self.desc_generator = DescriptionGenerator()
+            print("Loading semantic chunker...")  
+            self.chunker = SemanticChunker()
+            print("Loading CLIP for embeddings...")
+            self.clip_model, _, self.preprocess = open_clip.create_model_and_transforms('ViT-B-32', pretrained='openai')
+            self.tokenizer = open_clip.get_tokenizer('ViT-B-32')
+            self.clip_model = self.clip_model.to("cuda")
+            self.clip_model.eval()
+            print("✓ All models loaded")
         else:
-            print("Semantic RAG initialized without model (cache-only mode)")
-            self.model = None
-            self.processor = None
+            # Cache-only mode - don't load any models
+            print("Semantic RAG initialized without description generation (cache-only mode)")
+            self.desc_generator = None
+            self.chunker = None
+            self.clip_model = None
+            self.preprocess = None
+            self.tokenizer = None
         
     def embed_frames(self, frames):
         """Embed frames using CLIP"""
@@ -54,7 +60,7 @@ class SemanticRAG:
         ]).to(self.device)
         
         with torch.no_grad():
-            embeddings = self.model.encode_image(processed_frames)
+            embeddings = self.clip_model.encode_image(processed_frames)
             embeddings = embeddings / embeddings.norm(dim=-1, keepdim=True)
         
         return embeddings.cpu().numpy()
@@ -64,7 +70,7 @@ class SemanticRAG:
         text_tokens = self.tokenizer([text]).to(self.device)
         
         with torch.no_grad():
-            text_embedding = self.model.encode_text(text_tokens)
+            text_embedding = self.clip_model.encode_text(text_tokens)
             text_embedding = text_embedding / text_embedding.norm(dim=-1, keepdim=True)
         
         return text_embedding.cpu().numpy()
@@ -94,6 +100,9 @@ class SemanticRAG:
             timing['uniform_chunking'] = 0
             print(f"Using cached semantic chunks: {len(semantic_chunks)} chunks")
         else:
+            if self.desc_generator is None or self.chunker is None:
+                raise ValueError("Cannot process video without models. Set load_model=True or use cached data.")
+            
             # Full processing pipeline
             # 1. Extract frames
             start = time.time()
@@ -155,6 +164,41 @@ class SemanticRAG:
         # 6. Embed query and retrieve
         query_embedding = self.embed_text(query)
         
+        start = time.time()
+        top_k_indices, similarities = self.retrieve_top_k_chunks(
+            chunk_embeddings, query_embedding, k=k
+        )
+        timing['retrieval'] = time.time() - start
+        
+        relevant_chunks = [semantic_chunks[i] for i in top_k_indices]
+        
+        print(f"Top similarities: {similarities}")
+        print(f"Timing breakdown: {timing}")
+        
+        return relevant_chunks, similarities, timing
+    
+    def process_video_with_embedding(self, video_path, query_embedding, k=10):
+        """Process video using precomputed query embedding (cache-only mode)"""
+        timing = {}
+        
+        print(f"Processing video: {video_path}")
+        print("Using precomputed query embedding")
+        
+        # Load from cache (required for this mode)
+        cached = self._load_from_cache(video_path)
+        
+        if cached is None:
+            raise ValueError(f"No cached data found for {video_path}. Run with full processing first.")
+        
+        semantic_chunks, semantic_descriptions, chunk_embeddings = cached
+        timing['description_generation'] = 0
+        timing['semantic_merging'] = 0
+        timing['embedding'] = 0
+        timing['frame_extraction'] = 0
+        timing['uniform_chunking'] = 0
+        print(f"Using cached semantic chunks: {len(semantic_chunks)} chunks")
+        
+        # Retrieve using precomputed query embedding
         start = time.time()
         top_k_indices, similarities = self.retrieve_top_k_chunks(
             chunk_embeddings, query_embedding, k=k
