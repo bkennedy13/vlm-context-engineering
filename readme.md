@@ -1,12 +1,5 @@
 # VLM Context Engineering
 
-Research project investigating how different context management stra### Next Steps
-
-### Level 3: Event Knowledge Graph (EKG)
-- Build temporal event graphs from semantic chunks
-- Connect events via causal/temporal relationships
-- Graph-based retrieval for multi-hop reasoningision-language model (VLM) performance on video question answering.
-
 ## Project Overview
 
 We're building on the AVAS (Agentic Video Analytics System) paper to perform a fine grained evaluation of how improvements in context management impact VLM accuracy, latency, and cost. Starting with a simple vector-RAG baseline, we progressively add: semantic chunking, event knowledge graphs, tri-view retrieval, agentic search, and self-consistency.
