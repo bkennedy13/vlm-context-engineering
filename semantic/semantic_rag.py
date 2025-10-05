@@ -6,6 +6,7 @@ from pathlib import Path
 from PIL import Image
 import pickle
 import sys
+from transformers import Qwen2_5_VLForConditionalGeneration, AutoProcessor
 sys.path.append(str(Path(__file__).parent.parent))
 
 from baseline.video_utils import extract_frames_at_fps, create_chunks
@@ -13,26 +14,28 @@ from semantic.description_generator import DescriptionGenerator
 from semantic.semantic_chunker import SemanticChunker
 
 class SemanticRAG:
-    def __init__(self, clip_model='ViT-B-32', pretrained='openai', similarity_threshold=0.65):
-        """Initialize Semantic RAG with description generation and merging"""
+    def __init__(self, model_name="Qwen/Qwen2.5-VL-2B-Instruct", 
+                 similarity_threshold=0.65, load_model=True):
+        self.similarity_threshold = similarity_threshold
         self.device = "cuda" if torch.cuda.is_available() else "cpu"
-        print(f"Using device: {self.device}")
         
-        # CLIP for embedding
-        self.model, _, self.preprocess = open_clip.create_model_and_transforms(
-            clip_model, pretrained=pretrained, device=self.device
-        )
-        self.tokenizer = open_clip.get_tokenizer(clip_model)
-        
-        # Description generator (VLM)
-        self.desc_generator = DescriptionGenerator()
-        
-        # Semantic chunker
-        self.chunker = SemanticChunker(similarity_threshold=similarity_threshold)
-        
-        # Cache directory for descriptions
+        # Always set cache_dir regardless of load_model
         self.cache_dir = Path("data/semantic_cache")
-        self.cache_dir.mkdir(exist_ok=True)
+        self.cache_dir.mkdir(parents=True, exist_ok=True)
+        
+        if load_model:
+            print(f"Loading Semantic VLM: {model_name}")
+            self.model = Qwen2_5_VLForConditionalGeneration.from_pretrained(
+                model_name,
+                torch_dtype=torch.bfloat16,
+                device_map="auto"
+            )
+            self.processor = AutoProcessor.from_pretrained(model_name)
+            print(f"Semantic VLM loaded on {self.device}")
+        else:
+            print("Semantic RAG initialized without model (cache-only mode)")
+            self.model = None
+            self.processor = None
         
     def embed_frames(self, frames):
         """Embed frames using CLIP"""
