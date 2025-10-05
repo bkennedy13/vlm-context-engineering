@@ -1,6 +1,11 @@
 # VLM Context Engineering
 
-Research project investigating how different context management strategies affect vision-language model (VLM) performance on video question answering.
+Research project investigating how different context management stra### Next Steps
+
+### Level 3: Event Knowledge Graph (EKG)
+- Build temporal event graphs from semantic chunks
+- Connect events via causal/temporal relationships
+- Graph-based retrieval for multi-hop reasoningision-language model (VLM) performance on video question answering.
 
 ## Project Overview
 
@@ -24,6 +29,25 @@ We're building on the AVAS (Agentic Video Analytics System) paper to perform a f
 ![Retrieval Inference](results/level1_timing.png)
 ![Duration Accuracy](results/level1_duration_accuracy.png)
 
+## Level 2 Semantic RAG Results
+
+### Accuracy by Video Duration
+| Duration | Level 1 (Baseline) | Level 2 (Semantic) | Improvement |
+|----------|-------|-------|----------|
+| Short Videos | 56.7% | 58.3% | +1.6% |
+| Medium Videos | 51.7% | 58.3% | +6.6% |
+| Long Videos | 43.3% | 40.0% | -3.3% |
+| **Overall** | **52.0%** | **54.7%** | **+2.7%** |
+
+### Top Task Type Results
+| Task Type | Level 1 | Level 2 | Improvement |
+|-----------|---------|---------|-------------|
+| OCR Problems | 75.0% | 100.0% | +25.0% |
+| Information Synopsis | 66.7% | 80.0% | +13.3% |
+| Spatial Reasoning | 50.0% | 75.0% | +25.0% |
+| Object Recognition | 60.9% | 65.2% | +4.3% |
+| Action Reasoning | 50.0% | 57.1% | +7.1% |
+
 ## Current Status
 
 ### Completed
@@ -34,6 +58,10 @@ We're building on the AVAS (Agentic Video Analytics System) paper to perform a f
   - 3-frame chunking with middle-frame CLIP embeddings
   - Top-10 chunk retrieval via cosine similarity
   - Qwen2.5-VL-7B for answer generation
+- **Level 2 Semantic RAG**: 
+  - Semantic event detection using BERTScore (threshold=0.65)
+  - Variable-length chunks with description generation (Qwen2.5-VL-2B)
+  - 2.7% overall accuracy improvement, mixed results across video lengths
 - Evaluation infrastructure with checkpointing and detailed metrics
 
 ### Infrastructure
@@ -47,6 +75,11 @@ vlm-context-engineering/
 ├── baseline/              # Level 1: Simple vector RAG
 │   ├── baseline_rag.py
 │   └── video_utils.py
+├── semantic/              # Level 2: Semantic chunking RAG
+│   ├── semantic_rag.py
+│   ├── semantic_chunker.py
+│   ├── description_generator.py
+│   └── semantic_answerer.py
 ├── shared/                # Reusable across levels
 │   ├── vlm_answerer.py
 │   └── video_manager.py
@@ -54,9 +87,11 @@ vlm-context-engineering/
 │   ├── eval_subset.json   # 50 videos, 150 questions
 │   └── [cached videos]
 ├── results/
-│   └── level1_baseline_rag.json
+│   ├── level1_baseline_rag.json
+│   └── level2_semantic_rag.json
 ├── scripts/
 │   └── download_eval_videos.py
+├── evaluate_semantic_results.ipynb
 └── eval.py                # Main evaluation runner
 ```
 
@@ -78,8 +113,11 @@ Each level reuses the same 50-video eval set for direct comparison.
 
 ## Running Evaluations
 ```bash
-# Full baseline evaluation
+# Level 1: Baseline evaluation
 python eval.py --level baseline
+
+# Level 2: Semantic RAG evaluation  
+python eval.py --level semantic
 ```
 
 ## Key Files
