@@ -33,7 +33,7 @@ class SemanticRAG:
             self.tokenizer = open_clip.get_tokenizer('ViT-B-32')
             self.clip_model = self.clip_model.to("cuda")
             self.clip_model.eval()
-            print("✓ All models loaded")
+            print("All models loaded")
         else:
             # Cache-only mode - don't load any models
             print("Semantic RAG initialized without description generation (cache-only mode)")
