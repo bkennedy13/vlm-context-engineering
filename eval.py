@@ -6,18 +6,20 @@ import numpy as np
 from pathlib import Path
 from tqdm import tqdm
 import pickle
+import open_clip
 
 from shared.vlm_answerer import VLMAnswerer
 from shared.video_manager import VideoManager
 from baseline.baseline_rag import VideoRAGBaseline
-from semantic.semantic_rag import SemanticRAG
-from semantic.semantic_answerer import SemanticVLMAnswerer
-import open_clip
+
+from semantic.merged_retriever import MergedChunkRetriever
+from semantic.merged_answerer import MergedVLMAnswerer
+
 
 def run_semantic_evaluation(eval_subset_path='data/eval_subset.json', 
-                           output_path='results/level2_semantic_rag.json',
+                           output_path='results/level2_semantic_merged.json',
                            checkpoint_interval=10):
-    """Run semantic evaluation with online CLIP embedding"""
+    """Run Level 2 evaluation with merged chunks"""
     
     # Load eval subset
     print("Loading evaluation subset...")
@@ -30,27 +32,18 @@ def run_semantic_evaluation(eval_subset_path='data/eval_subset.json',
     # Initialize models
     print("\nInitializing models...")
     video_manager = VideoManager()
-    semantic_rag = SemanticRAG(similarity_threshold=0.65, load_model=False)  # Cache-only, no CLIP yet
-    semantic_vlm = SemanticVLMAnswerer()  # 7B VLM for answering
-    
-    # NOW load CLIP for retrieval (after 7B VLM is loaded)
-    print("Loading CLIP for retrieval...")
-    import open_clip
-    clip_model, _, preprocess = open_clip.create_model_and_transforms('ViT-B-32', pretrained='openai')
-    clip_tokenizer = open_clip.get_tokenizer('ViT-B-32')
-    clip_model = clip_model.to("cuda")
-    clip_model.eval()
+    retriever = MergedChunkRetriever()  # NEW
+    answerer = MergedVLMAnswerer()      # NEW
     
     # Check GPU memory
     if torch.cuda.is_available():
         allocated = torch.cuda.memory_allocated() / 1024**3
         reserved = torch.cuda.memory_reserved() / 1024**3
         total = torch.cuda.get_device_properties(0).total_memory / 1024**3
-        print(f"\nGPU Memory after all models loaded:")
+        print(f"\nGPU Memory:")
         print(f"  Allocated: {allocated:.2f}GB")
         print(f"  Reserved: {reserved:.2f}GB") 
         print(f"  Total: {total:.2f}GB")
-        print(f"  Free: {total - reserved:.2f}GB")
     
     # Run evaluation
     results = []
@@ -64,54 +57,36 @@ def run_semantic_evaluation(eval_subset_path='data/eval_subset.json',
                 print(f"\nSkipping {sample['video_id']}: video unavailable")
                 continue
             
-            # Embed query with CLIP
-            embed_start = time.time()
-            text_tokens = clip_tokenizer([sample['question']]).to("cuda")
-            with torch.no_grad():
-                question_embedding = clip_model.encode_text(text_tokens)
-                question_embedding = question_embedding / question_embedding.norm(dim=-1, keepdim=True)
-            question_embedding = question_embedding.cpu().numpy()
-            embed_time = time.time() - embed_start
-            
-            # Retrieve relevant chunks
+            # Retrieve merged chunks
             retrieval_start = time.time()
-            chunks, similarities, timing = semantic_rag.process_video_with_embedding(
+            chunks, descriptions, similarities = retriever.retrieve_chunks(
                 video_path, 
-                question_embedding,
-                k=10
+                sample['question'], 
+                k=10,
+                cache_dir='data/semantic_cache_level2'
             )
-            retrieval_time = time.time() - retrieval_start - embed_time  # Subtract embed time
+            retrieval_time = time.time() - retrieval_start
             
             if chunks is None:
                 print(f"\nSkipping {sample['question_id']}: retrieval failed")
                 continue
             
-            # Load descriptions from cache
-            cache_path = semantic_rag._get_cache_path(video_path)
-            with open(cache_path, 'rb') as f:
-                cache_data = pickle.load(f)
-            descriptions = cache_data['semantic_descriptions']
-            
-            # Get semantic VLM answer
+            # Answer question
             inference_start = time.time()
-            predicted = semantic_vlm.answer_question(
-                chunks, similarities, descriptions,
+            predicted = answerer.answer_question(
+                chunks, 
+                descriptions,
+                similarities,
                 sample['question'], 
                 sample['options']
             )
             inference_time = time.time() - inference_start
             
-            # Store metrics before cleanup
-            total_chunks = len(chunks)
+            # Metrics
             chunk_lengths = [len(chunk) for chunk in chunks]
-            total_frames_used = sum(chunk_lengths)
-            max_chunk_length = max(chunk_lengths) if chunk_lengths else 0
-            avg_chunk_length = float(np.mean(chunk_lengths)) if chunk_lengths else 0.0
-            top_sim = float(similarities[0]) if len(similarities) > 0 else 0.0
-            mean_sim = float(np.mean(similarities)) if len(similarities) > 0 else 0.0
             
             # Cleanup
-            del chunks, similarities, descriptions, question_embedding
+            del chunks, descriptions, similarities
             torch.cuda.empty_cache()
             
             # Store result
@@ -125,51 +100,46 @@ def run_semantic_evaluation(eval_subset_path='data/eval_subset.json',
                 'predicted': predicted,
                 'correct': sample['answer'],
                 'is_correct': is_correct,
-                'embed_time': embed_time,
                 'retrieval_time': retrieval_time,
                 'inference_time': inference_time,
-                'total_chunks': total_chunks,
-                'total_frames_used': total_frames_used,
-                'max_chunk_length': max_chunk_length,
-                'avg_chunk_length': avg_chunk_length,
-                'top_similarity': top_sim,
-                'mean_similarity': mean_sim,
+                'total_chunks': len(chunk_lengths),
+                'total_frames_used': sum(chunk_lengths),
+                'max_chunk_length': max(chunk_lengths) if chunk_lengths else 0,
+                'avg_chunk_length': float(np.mean(chunk_lengths)) if chunk_lengths else 0.0,
+                'top_similarity': float(similarities[0]) if len(similarities) > 0 else 0.0,
+                'mean_similarity': float(np.mean(similarities)) if len(similarities) > 0 else 0.0,
             })
             
-            # Memory check every 10 questions
+            # Memory check
             if torch.cuda.is_available() and (i + 1) % 10 == 0:
                 allocated = torch.cuda.memory_allocated() / 1024**3
-                print(f"\nGPU Memory after {i+1} questions: {allocated:.2f}GB allocated")
+                print(f"\nGPU Memory: {allocated:.2f}GB")
             
-            # Periodic checkpoint
+            # Checkpoint
             if (i + 1) % checkpoint_interval == 0:
                 checkpoint_path = output_path.replace('.json', f'_checkpoint_{i+1}.json')
                 save_semantic_results(results, checkpoint_path, partial=True)
-                print(f"\nCheckpoint saved: {len(results)} results so far")
+                print(f"\nCheckpoint: {len(results)} results")
                 
         except Exception as e:
-            print(f"\nError processing {sample['question_id']}: {e}")
+            print(f"\nError: {sample['question_id']}: {e}")
             import traceback
             traceback.print_exc()
             continue
-    
-    # Cleanup CLIP
-    del clip_model, preprocess, clip_tokenizer
-    torch.cuda.empty_cache()
     
     total_time = time.time() - start_time
     save_semantic_results(results, output_path, total_time=total_time)
     
     print(f"\n{'='*60}")
-    print("SEMANTIC EVALUATION COMPLETE")
+    print("LEVEL 2 EVALUATION COMPLETE")
     print(f"{'='*60}")
-    print(f"Total time: {total_time/60:.1f} minutes")
-    print(f"Results saved to: {output_path}")
+    print(f"Time: {total_time/60:.1f} min")
+    print(f"Results: {output_path}")
     
     return results
 
 def save_semantic_results(results, output_path, partial=False, total_time=None):
-    """Save semantic evaluation results with summary statistics"""
+    """Save Level 2 semantic evaluation results with summary statistics"""
     
     if not results:
         print("No results to save")
@@ -202,28 +172,30 @@ def save_semantic_results(results, output_path, partial=False, total_time=None):
             'avg_retrieval_time': float(np.mean([r['retrieval_time'] for r in dur_results])) if dur_results else 0,
             'avg_inference_time': float(np.mean([r['inference_time'] for r in dur_results])) if dur_results else 0,
             'avg_chunk_count': float(np.mean([r['total_chunks'] for r in dur_results])) if dur_results else 0,
-            'avg_frames_used': float(np.mean([r.get('total_frames_used', 0) for r in dur_results])) if dur_results else 0
+            'avg_frames_used': float(np.mean([r['total_frames_used'] for r in dur_results])) if dur_results else 0,
+            'avg_chunk_length': float(np.mean([r['avg_chunk_length'] for r in dur_results])) if dur_results else 0
         }
     
     # Semantic-specific statistics
     semantic_stats = {
         'avg_chunks_per_question': float(np.mean([r['total_chunks'] for r in results])) if results else 0,
-        'avg_frames_per_question': float(np.mean([r.get('total_frames_used', 0) for r in results])) if results else 0,
-        'avg_chunk_length': float(np.mean([r.get('avg_chunk_length', 0) for r in results])) if results else 0,
-        'max_chunk_length': max([r.get('max_chunk_length', 0) for r in results]) if results else 0,
+        'avg_frames_per_question': float(np.mean([r['total_frames_used'] for r in results])) if results else 0,
+        'avg_chunk_length': float(np.mean([r['avg_chunk_length'] for r in results])) if results else 0,
+        'max_chunk_length': max([r['max_chunk_length'] for r in results]) if results else 0,
         'avg_top_similarity': float(np.mean([r['top_similarity'] for r in results])) if results else 0,
         'avg_mean_similarity': float(np.mean([r['mean_similarity'] for r in results])) if results else 0
     }
     
     output = {
-        'level': 'level2_semantic_rag',
+        'level': 'level2_semantic_merged',
         'config': {
             'k': 10,
             'fps': 1,
-            'semantic_chunking': True,
-            'similarity_threshold': 0.65,
-            'adaptive_selection': True,
-            'description_model': 'Qwen2.5-VL-2B-Instruct',
+            'base_chunk_size': 5,
+            'merge_threshold': 0.70,
+            'length_caps': {'short': 30, 'medium': 30, 'long': 60},
+            'retrieval': 'merged_chunks_clip_5frame_avg',
+            'description_model': 'Qwen2-VL-2B-Instruct',
             'answering_model': 'Qwen2.5-VL-7B-Instruct'
         },
         'partial': partial,
@@ -244,22 +216,22 @@ def save_semantic_results(results, output_path, partial=False, total_time=None):
         json.dump(output, f, indent=2)
     
     if not partial:
-        print(f"\nOverall Accuracy: {accuracy:.2%} ({correct}/{total})")
-        print(f"Avg Retrieval Time: {output['avg_retrieval_time']:.2f}s")
-        print(f"Avg Inference Time: {output['avg_inference_time']:.2f}s")
-        print(f"Avg Chunks per Question: {semantic_stats['avg_chunks_per_question']:.1f}")
-        print(f"Avg Frames per Question: {semantic_stats['avg_frames_per_question']:.1f}")
+        print(f"\nAccuracy: {accuracy:.2%} ({correct}/{total})")
+        print(f"Retrieval: {output['avg_retrieval_time']:.2f}s")
+        print(f"Inference: {output['avg_inference_time']:.2f}s")
+        print(f"Avg chunks: {semantic_stats['avg_chunks_per_question']:.1f}")
+        print(f"Avg frames: {semantic_stats['avg_frames_per_question']:.1f}")
+        print(f"Avg chunk length: {semantic_stats['avg_chunk_length']:.1f}s")
         
-        print("\nBy Task Type:")
-        for task, stats in sorted(task_stats.items(), key=lambda x: -x[1]['accuracy']):
+        print("\nBy Task:")
+        for task, stats in sorted(task_stats.items(), key=lambda x: -x[1]['accuracy'])[:5]:
             print(f"  {task}: {stats['accuracy']:.2%} ({stats['correct']}/{stats['total']})")
         
         print("\nBy Duration:")
         for dur in ['short', 'medium', 'long']:
             stats = duration_stats[dur]
-            avg_frames = stats.get('avg_frames_used', 0)
             print(f"  {dur}: {stats['accuracy']:.2%} ({stats['correct']}/{stats['total']}) | "
-                  f"avg {avg_frames:.0f} frames")
+                  f"{stats['avg_frames_used']:.0f} frames, {stats['avg_chunk_length']:.1f}s chunks")
 
 def run_baseline_evaluation(eval_subset_path='data/eval_subset.json', 
                            output_path='results/level1_baseline_rag.json',
