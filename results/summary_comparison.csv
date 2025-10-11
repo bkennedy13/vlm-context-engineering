@@ -1,0 +1,3 @@
+Level,Overall Acc,Short Acc,Medium Acc,Long Acc,Avg Time (s),Questions
+level1_baseline_rag,52.0%,56.7%,51.7%,43.3%,11.0,150
+level2_semantic_merged,59.3%,60.0%,68.3%,40.0%,13.8,150
