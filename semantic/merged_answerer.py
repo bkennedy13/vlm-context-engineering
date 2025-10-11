@@ -15,9 +15,9 @@ class MergedVLMAnswerer:
             model_name, torch_dtype=torch.bfloat16, device_map="auto"
         )
         self.processor = AutoProcessor.from_pretrained(model_name)
-        print(f"✓ MergedVLMAnswerer loaded on {self.device}")
+        print(f"MergedVLMAnswerer loaded on {self.device}")
     
-    def answer_question(self, chunks, descriptions, similarities, question, options):
+    def answer_question(self, chunks, descriptions, similarities, question, options, video_duration=None):
         """
         Generate answer from retrieved merged chunks
         
@@ -32,7 +32,7 @@ class MergedVLMAnswerer:
             Single letter answer (A, B, C, or D)
         """
         # Adaptive chunk selection based on similarity drop-off
-        n_selected = self._select_chunks_adaptively(similarities)
+        n_selected = self._select_chunks_adaptively(similarities, video_duration=video_duration)
         selected_indices = np.argsort(similarities)[::-1][:n_selected]
         selected_sims = similarities[selected_indices]
         
@@ -54,7 +54,7 @@ class MergedVLMAnswerer:
             # Add description
             content.append({
                 "type": "text",
-                "text": f"Event {i+1}: {description[:500]}"
+                "text": f"Event {i+1}: {description[:3000]}"
             })
             
             # Sample frames from chunk based on budget
@@ -117,8 +117,22 @@ class MergedVLMAnswerer:
         
         return output_text[0] if output_text else 'A'
     
-    def _select_chunks_adaptively(self, similarities, min_chunks=1, max_chunks=3, gap_threshold=0.05):
-        """Select chunks based on similarity drop-off"""
+    def _select_chunks_adaptively(self, similarities, video_duration=None, gap_threshold=0.05):
+        """Select chunks based on similarity drop-off and video duration"""
+        
+        # Set max_chunks based on video duration
+        # More than 3 seems to be too much context for 7B model
+        if video_duration == 'short':
+            max_chunks = 3
+        elif video_duration == 'medium':
+            max_chunks = 3
+        elif video_duration == 'long':
+            max_chunks = 3
+        else:
+            max_chunks = 3  # Default for unknown duration
+        
+        min_chunks = 1
+        
         if len(similarities) <= min_chunks:
             return len(similarities)
         

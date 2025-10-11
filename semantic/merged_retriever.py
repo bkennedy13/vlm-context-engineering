@@ -19,6 +19,7 @@ class MergedChunkRetriever:
         )
         self.tokenizer = open_clip.get_tokenizer(model_name)
         self.model.eval()
+        self.current_video_path = None  # Track current video for frame extraction
         
         print("MergedChunkRetriever initialized")
     
@@ -39,6 +40,8 @@ class MergedChunkRetriever:
         """
         print(f"Retrieving from: {video_path}")
         print(f"Query: {query}")
+        
+        self.current_video_path = video_path
         
         # 1. Load merged cache
         cache_data = self._load_cache(video_path, cache_dir)
@@ -123,17 +126,30 @@ class MergedChunkRetriever:
         """
         Build frame chunks using frame indices from merged cache
         
-        Args:
-            video_frames: All video frames at 1 FPS
-            merged_chunks_metadata: List of merged chunk metadata from cache
-        
-        Returns:
-            List of chunks (each chunk is list of frames)
+        The cache stores original video frame indices (e.g., [0, 24, 48, 72, 96])
+        We need to map these to our 1 FPS extracted frame array indices (e.g., [0, 1, 2, 3, 4])
         """
         chunks = []
+        
+        # Get video FPS to calculate the mapping
+        cap = cv2.VideoCapture(str(self.current_video_path))
+        original_fps = cap.get(cv2.CAP_PROP_FPS)
+        cap.release()
+        
+        frame_interval = int(original_fps / 1)  # Frames between each 1 FPS sample
+        
         for chunk_meta in merged_chunks_metadata:
-            frame_indices = chunk_meta['frame_indices']
-            chunk_frames = [video_frames[idx] for idx in frame_indices]
+            original_frame_indices = chunk_meta['frame_indices']
+            
+            # Convert original indices to 1 FPS array positions
+            fps_indices = [idx // frame_interval for idx in original_frame_indices]
+            
+            # Build chunk, skipping any indices beyond array bounds
+            chunk_frames = []
+            for i in fps_indices:
+                if i < len(video_frames):
+                    chunk_frames.append(video_frames[i])
+            
             chunks.append(chunk_frames)
         
         return chunks

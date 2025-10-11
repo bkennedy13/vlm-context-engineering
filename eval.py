@@ -78,19 +78,24 @@ def run_semantic_evaluation(eval_subset_path='data/eval_subset.json',
                 descriptions,
                 similarities,
                 sample['question'], 
-                sample['options']
+                sample['options'],
+                video_duration=sample['duration']
             )
             inference_time = time.time() - inference_start
             
             # Metrics
             chunk_lengths = [len(chunk) for chunk in chunks]
             
-            # Cleanup
-            del chunks, descriptions, similarities
-            torch.cuda.empty_cache()
-            
             # Store result
             is_correct = predicted == sample['answer']
+            
+            top_sim = float(similarities[0]) if len(similarities) > 0 else 0.0
+            mean_sim = float(np.mean(similarities)) if len(similarities) > 0 else 0.0
+            
+            # Cleanup
+            del chunks, descriptions, similarities
+            torch.cuda.empty_cache()   
+            
             results.append({
                 'video_id': sample['video_id'],
                 'question_id': sample['question_id'],
@@ -106,8 +111,8 @@ def run_semantic_evaluation(eval_subset_path='data/eval_subset.json',
                 'total_frames_used': sum(chunk_lengths),
                 'max_chunk_length': max(chunk_lengths) if chunk_lengths else 0,
                 'avg_chunk_length': float(np.mean(chunk_lengths)) if chunk_lengths else 0.0,
-                'top_similarity': float(similarities[0]) if len(similarities) > 0 else 0.0,
-                'mean_similarity': float(np.mean(similarities)) if len(similarities) > 0 else 0.0,
+                'top_similarity': top_sim,
+                'mean_similarity': mean_sim,
             })
             
             # Memory check
