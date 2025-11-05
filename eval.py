@@ -15,6 +15,9 @@ from baseline.baseline_rag import VideoRAGBaseline
 from semantic.merged_retriever import MergedChunkRetriever
 from semantic.merged_answerer import MergedVLMAnswerer
 
+from ekg.event_retriever import EventRetriever
+from ekg.event_answerer import EventAnswerer
+
 
 def run_semantic_evaluation(eval_subset_path='data/eval_subset.json', 
                            output_path='results/level2_semantic_merged.json',
@@ -143,6 +146,130 @@ def run_semantic_evaluation(eval_subset_path='data/eval_subset.json',
     
     return results
 
+def run_event_evaluation(eval_subset_path='data/eval_subset.json',
+                        output_path='results/level3_events.json',
+                        checkpoint_interval=10):
+    """Run Level 3 event-based evaluation"""
+    
+    # Load eval subset
+    print("Loading evaluation subset...")
+    with open(eval_subset_path, 'r') as f:
+        eval_samples = json.load(f)
+    
+    n_videos = len(set(s['video_id'] for s in eval_samples))
+    print(f"Loaded {len(eval_samples)} questions from {n_videos} videos")
+    
+    # Initialize models
+    print("\nInitializing models...")
+    video_manager = VideoManager()
+    retriever = EventRetriever()
+    answerer = EventAnswerer()
+    
+    # Check GPU memory
+    if torch.cuda.is_available():
+        allocated = torch.cuda.memory_allocated() / 1024**3
+        reserved = torch.cuda.memory_reserved() / 1024**3
+        total = torch.cuda.get_device_properties(0).total_memory / 1024**3
+        print(f"\nGPU Memory:")
+        print(f"  Allocated: {allocated:.2f}GB")
+        print(f"  Reserved: {reserved:.2f}GB") 
+        print(f"  Total: {total:.2f}GB")
+    
+    # Run evaluation
+    results = []
+    start_time = time.time()
+    
+    for i, sample in enumerate(tqdm(eval_samples, desc="Evaluating")):
+        try:
+            # Get video
+            video_path = video_manager.get_video(sample['youtube_id'])
+            if not video_path:
+                print(f"\nSkipping {sample['video_id']}: video unavailable")
+                continue
+            
+            # Retrieve events
+            retrieval_start = time.time()
+            events, similarities = retriever.retrieve_events(
+                sample['youtube_id'],
+                sample['question'],
+                k=5,
+                gap_threshold=0.05,  # <-- Adjust this (higher = more selective)
+                min_events=2          # <-- Adjust this (lower bound)
+            )
+            retrieval_time = time.time() - retrieval_start
+            
+            if events is None:
+                print(f"\nSkipping {sample['question_id']}: EKG unavailable")
+                continue
+            
+            # Answer question
+            inference_start = time.time()
+            predicted = answerer.answer_question(
+                events,
+                video_path,
+                sample['question'],
+                sample['options'],
+                frame_budget=25
+            )
+            inference_time = time.time() - inference_start
+            
+            # Store result
+            is_correct = predicted == sample['answer']
+            
+            top_sim = float(similarities[0]) if len(similarities) > 0 else 0.0
+            mean_sim = float(np.mean(similarities)) if len(similarities) > 0 else 0.0
+            
+            
+            num_events = len(events) if events else 0
+
+            # Cleanup
+            del events, similarities
+            torch.cuda.empty_cache()
+            
+            results.append({
+                'video_id': sample['video_id'],
+                'question_id': sample['question_id'],
+                'task_type': sample['task_type'],
+                'duration': sample['duration'],
+                'question': sample['question'],
+                'predicted': predicted,
+                'correct': sample['answer'],
+                'is_correct': is_correct,
+                'retrieval_time': retrieval_time,
+                'inference_time': inference_time,
+                'num_events': num_events,
+                'top_similarity': top_sim,
+                'mean_similarity': mean_sim,
+            })
+            
+            # Memory check
+            if torch.cuda.is_available() and (i + 1) % 10 == 0:
+                allocated = torch.cuda.memory_allocated() / 1024**3
+                print(f"\nGPU Memory: {allocated:.2f}GB")
+            
+            # Checkpoint
+            if (i + 1) % checkpoint_interval == 0:
+                checkpoint_path = output_path.replace('.json', f'_checkpoint_{i+1}.json')
+                save_event_results(results, checkpoint_path, partial=True)
+                print(f"\nCheckpoint: {len(results)} results")
+                
+        except Exception as e:
+            print(f"\nError: {sample['question_id']}: {e}")
+            import traceback
+            traceback.print_exc()
+            continue
+    
+    total_time = time.time() - start_time
+    save_event_results(results, output_path, total_time=total_time)
+    
+    print(f"\n{'='*60}")
+    print("LEVEL 3 EVALUATION COMPLETE")
+    print(f"{'='*60}")
+    print(f"Time: {total_time/60:.1f} min")
+    print(f"Results: {output_path}")
+    
+    return results
+
 def save_semantic_results(results, output_path, partial=False, total_time=None):
     """Save Level 2 semantic evaluation results with summary statistics"""
     
@@ -237,6 +364,90 @@ def save_semantic_results(results, output_path, partial=False, total_time=None):
             stats = duration_stats[dur]
             print(f"  {dur}: {stats['accuracy']:.2%} ({stats['correct']}/{stats['total']}) | "
                   f"{stats['avg_frames_used']:.0f} frames, {stats['avg_chunk_length']:.1f}s chunks")
+
+def save_event_results(results, output_path, partial=False, total_time=None):
+    """Save Level 3 event evaluation results"""
+    
+    if not results:
+        print("No results to save")
+        return
+    
+    total = len(results)
+    correct = sum(r['is_correct'] for r in results)
+    accuracy = correct / total if total > 0 else 0
+    
+    # Task type breakdown
+    task_stats = {}
+    for task in set(r['task_type'] for r in results):
+        task_results = [r for r in results if r['task_type'] == task]
+        task_correct = sum(r['is_correct'] for r in task_results)
+        task_stats[task] = {
+            'total': len(task_results),
+            'correct': task_correct,
+            'accuracy': task_correct / len(task_results) if task_results else 0
+        }
+    
+    # Duration breakdown
+    duration_stats = {}
+    for duration in ['short', 'medium', 'long']:
+        dur_results = [r for r in results if r['duration'] == duration]
+        dur_correct = sum(r['is_correct'] for r in dur_results)
+        duration_stats[duration] = {
+            'total': len(dur_results),
+            'correct': dur_correct,
+            'accuracy': dur_correct / len(dur_results) if dur_results else 0,
+            'avg_retrieval_time': float(np.mean([r['retrieval_time'] for r in dur_results])) if dur_results else 0,
+            'avg_inference_time': float(np.mean([r['inference_time'] for r in dur_results])) if dur_results else 0,
+            'avg_events_used': float(np.mean([r['num_events'] for r in dur_results])) if dur_results else 0
+        }
+    
+    # Event-specific statistics
+    event_stats = {
+        'avg_events_per_question': float(np.mean([r['num_events'] for r in results])) if results else 0,
+        'avg_top_similarity': float(np.mean([r['top_similarity'] for r in results])) if results else 0,
+        'avg_mean_similarity': float(np.mean([r['mean_similarity'] for r in results])) if results else 0
+    }
+    
+    output = {
+        'level': 'level3_events',
+        'config': {
+            'k': 5,
+            'frame_budget': 25,
+            'retrieval': 'event_description_similarity',
+            'answering_model': 'Qwen2.5-VL-7B-Instruct'
+        },
+        'partial': partial,
+        'total_questions': total,
+        'correct': correct,
+        'accuracy': accuracy,
+        'avg_retrieval_time': float(np.mean([r['retrieval_time'] for r in results])) if results else 0,
+        'avg_inference_time': float(np.mean([r['inference_time'] for r in results])) if results else 0,
+        'total_time': total_time,
+        'task_type_stats': task_stats,
+        'duration_stats': duration_stats,
+        'event_stats': event_stats,
+        'results': results
+    }
+    
+    Path(output_path).parent.mkdir(exist_ok=True)
+    with open(output_path, 'w') as f:
+        json.dump(output, f, indent=2)
+    
+    if not partial:
+        print(f"\nAccuracy: {accuracy:.2%} ({correct}/{total})")
+        print(f"Retrieval: {output['avg_retrieval_time']:.2f}s")
+        print(f"Inference: {output['avg_inference_time']:.2f}s")
+        print(f"Avg events: {event_stats['avg_events_per_question']:.1f}")
+        
+        print("\nBy Task:")
+        for task, stats in sorted(task_stats.items(), key=lambda x: -x[1]['accuracy'])[:5]:
+            print(f"  {task}: {stats['accuracy']:.2%} ({stats['correct']}/{stats['total']})")
+        
+        print("\nBy Duration:")
+        for dur in ['short', 'medium', 'long']:
+            stats = duration_stats[dur]
+            print(f"  {dur}: {stats['accuracy']:.2%} ({stats['correct']}/{stats['total']}) | "
+                  f"{stats['avg_events_used']:.1f} events")
 
 def run_baseline_evaluation(eval_subset_path='data/eval_subset.json', 
                            output_path='results/level1_baseline_rag.json',
@@ -405,7 +616,7 @@ def save_results(results, output_path, partial=False, total_time=None):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--level', type=str, required=True, 
-                       choices=['baseline', 'semantic', 'ekg', 'triview', 'agentic', 'consistency'])
+                       choices=['baseline', 'semantic', 'events', 'triview', 'agentic', 'consistency'])
     args = parser.parse_args()
     
     if args.level == 'baseline':
@@ -414,6 +625,9 @@ def main():
     elif args.level == 'semantic':
         print("Running Level 2: Semantic RAG Evaluation")
         results = run_semantic_evaluation()
+    elif args.level == 'events':
+        print("Running Level 3: Event-Based Evaluation")
+        results = run_event_evaluation()
     else:
         print(f"Level {args.level} not yet implemented")
         return
