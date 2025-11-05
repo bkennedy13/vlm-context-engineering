@@ -24,7 +24,7 @@ class GraphBuilder:
         
         for video_id, video_events in events_by_video.items():
             # Sort by first frame
-            video_events.sort(key=lambda e: min(e['frame_ids']))
+            video_events.sort(key=lambda e: min(e['frame_indices']))
             
             for i in range(len(video_events) - 1):
                 relationships.append({
@@ -54,6 +54,11 @@ class GraphBuilder:
                         })
         
         # 3. Entity-to-Entity: CO_OCCURS relationships
+        # BUILD ENTITY FREQUENCY MAP FIRST
+        entity_frequencies = {}
+        for entity in entities:
+            entity_frequencies[entity['entity_id']] = entity['frequency']
+        
         # Entities co-occur if they appear in the same event
         entity_cooccurrence = {}
         
@@ -66,6 +71,15 @@ class GraphBuilder:
                     entity_text = entity_text.lower().strip()
                     if entity_text in entity_map:
                         event_entities.add(entity_map[entity_text])
+            
+            # FILTER: Only keep entities that appear 3+ times across video
+            event_entities = [e for e in event_entities 
+                            if entity_frequencies.get(e, 0) >= 3]
+            
+            # LIMIT: Maximum 15 entities per event (keep most frequent)
+            event_entities = sorted(event_entities, 
+                                key=lambda e: entity_frequencies.get(e, 0), 
+                                reverse=True)[:15]
             
             # Create co-occurrence pairs
             event_entities = sorted(list(event_entities))
