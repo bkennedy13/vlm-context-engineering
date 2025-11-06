@@ -192,9 +192,13 @@ def run_event_evaluation(eval_subset_path='data/eval_subset.json',
             events, similarities = retriever.retrieve_events(
                 sample['youtube_id'],
                 sample['question'],
-                k=5,
-                gap_threshold=0.05,  # <-- Adjust this (higher = more selective)
-                min_events=2          # <-- Adjust this (lower bound)
+                video_path,
+                k=3,
+                clip_weight=0.65,
+                text_weight=0.35,
+                gap_threshold=0.05,
+                min_events=1,
+                frames_per_event=10
             )
             retrieval_time = time.time() - retrieval_start
             

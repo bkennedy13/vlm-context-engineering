@@ -49,10 +49,21 @@ class EventAnswerer:
         
         # Build VLM prompt
         content = []
-        frames_per_event = max(2, frame_budget // len(events)) if events else 0
+        frames_per_event = frame_budget // len(events)
         total_frames = 0
         
+        frames_collected = 0
         for i, event in enumerate(events):
+            # Calculate frames for this event
+            if i == len(events) - 1:
+                # Last event gets all remaining frames
+                frames_for_event = frame_budget - frames_collected
+            else:
+                frames_for_event = frames_per_event
+            
+            if frames_for_event <= 0:
+                break
+            
             # Add description
             content.append({
                 "type": "text",
@@ -61,21 +72,21 @@ class EventAnswerer:
             
             # Sample frames from event
             frames = self._sample_frames_from_event(
-                all_frames, event, frames_per_event, frame_interval
+                all_frames, event, frames_for_event, frame_interval
             )
             
             for frame in frames:
                 pil_frame = Image.fromarray(frame) if isinstance(frame, np.ndarray) else frame
                 content.append({"type": "image", "image": pil_frame})
-                total_frames += 1
+                frames_collected += 1
                 
-                if total_frames >= frame_budget:
+                if frames_collected >= frame_budget:
                     break
             
-            if total_frames >= frame_budget:
+            if frames_collected >= frame_budget:
                 break
         
-        print(f"Total frames to VLM: {total_frames}")
+        print(f"Total frames to VLM: {frames_collected}")
         
         # Add question
         options_text = "\n".join(options)
