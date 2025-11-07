@@ -10,37 +10,28 @@ We're building on the [AVAS (Agentic Video Analytics System)](https://arxiv.org/
 
 ### Overall Performance Comparison
 
-| Metric | Level 1 (Baseline) | Level 2 (Semantic) | Δ |
-|--------|-------|-------|------|
-| **Overall Accuracy** | 52.0% | 59.3% | **+7.3%** |
-| Avg Retrieval Time | 8.89s | 9.34s | +0.45s |
-| Avg Inference Time | 2.11s | 4.45s | +2.34s |
-| **Total Time/Question** | 11.0s | 13.8s | +2.8s |
+| Metric | Level 1 (Baseline) | Level 2 (Semantic) | Level 3 (Events) | Δ L2→L3 |
+|--------|-------|-------|-------|------|
+| **Overall Accuracy** | 52.0% | 59.3% | **54.7%** | **-4.6%** |
+| Avg Retrieval Time | 8.89s | 9.34s | 9.13s | -0.21s |
+| Avg Inference Time | 2.11s | 4.45s | 12.65s | +8.20s |
+| **Total Time/Question** | 11.0s | 13.8s | 21.8s | +8.0s |
 
 ### Accuracy by Video Duration
 
-| Duration | Level 1 | Level 2 | Δ |
-|----------|---------|---------|---|
-| Short Videos (60 questions) | 56.7% | 60.0% | +3.3% |
-| Medium Videos (60 questions) | 51.7% | 68.3% | **+16.6%** |
-| Long Videos (30 questions) | 43.3% | 40.0% | -3.3% |
+| Duration | Level 1 | Level 2 | Level 3 | Δ L2→L3 |
+|----------|---------|---------|---------|---------|
+| Short Videos (60 questions) | 56.7% | 60.0% | **65.0%** | **+5.0%** |
+| Medium Videos (60 questions) | 51.7% | 68.3% | **58.3%** | **-10.0%** |
+| Long Videos (30 questions) | 43.3% | 40.0% | **26.7%** | **-13.3%** |
 
-**Key Finding**: Semantic chunking shows **dramatic improvements on medium-length videos** (+16.6%), modest gains on short videos (+3.3%), but slight degradation on long videos (-3.3%). This suggests that adaptive chunking works best when there's enough content to merge semantically, but struggles with very long videos where retrieval becomes challenging.
-
-### Task Type Performance
-
-**Biggest Improvements:**
-- **Information Synopsis**: 80.0% → 86.7% (+6.7%)
-- **Action Recognition**: 44.4% → 55.6% (+11.1%)
-
-**Areas of Concern:**
-- **Object Reasoning**: 25.9% → 44.4% (+18.5%) - still low absolute performance
-- **Temporal Reasoning**: Still at 28.6% - both approaches struggle with temporal understanding
-- **Counting Problems**: 31.3% → 43.8% (+12.5%) - improvement but still challenging
+**Key Finding**: Event-based retrieval shows **strong improvements on short videos** (+5.0%), but **significant degradation on medium and long videos** (-10.0% and -13.3%). This suggests:
+- Event knowledge graphs help with focused, short-form content
+- Long videos create many events, making retrieval challenging
+- More careful retreival/graph traversal is required for increasingly long videos
 
 ![Accuracy Comparison](results/accuracy_comparison_all.png)
 ![Task Accuracy Comparison](results/task_accuracy_comparison.png)
-![Task Type Deltas](results/level2_vs_level1_delta.png)
 
 ### Latency Analysis
 
@@ -70,11 +61,26 @@ We're building on the [AVAS (Agentic Video Analytics System)](https://arxiv.org/
   - Frame budget: 25 frames distributed proportionally by similarity
 - **VLM**: Qwen2.5-VL-7B for answer generation
 
-**Key Differences from Baseline:**
-- Variable-length semantic chunks vs fixed 3-second chunks
-- Multi-frame embedding (5-frame average) vs single middle frame
-- Text descriptions included in VLM prompt
-- Adaptive chunk selection vs fixed top-10
+### Level 3: Event Knowledge Graphs (EKG)
+- **Event Creation**: Adjacent chunks merged if similarity > 0.75
+  - Average: 6.2 events per video
+- **Entity Extraction**: Qwen3-4B extracts entities (objects, actions, locations, attributes)
+- **Entity Linking**: Embedding-based deduplication (threshold=0.85)
+  - Links mentions of same entities across events
+- **Graph Construction**: 
+  - NEXT relationships (temporal sequence)
+  - APPEARS_IN relationships (entity→event)
+  - CO_OCCURS relationships (entity→entity, frequency ≥3, top 15 per event)
+- **Retrieval**: Dual-mode similarity
+  - CLIP embeddings (10 frames/event): 60% weight
+  - Text description similarity: 40% weight
+  - Top-k events selected (k=10)
+- **Context**:
+  - Events sorted chronologically
+  - Temporal header: "Events in chronological order"
+  - Event descriptions with timestamps: "Event 1 (0.0s - 5.0s): description"
+  - Frame budget: 30 frames allocated proportionally across events
+- **VLM**: Qwen2.5-VL-7B for answer generation
 
 ## Current Status
 
@@ -83,11 +89,11 @@ We're building on the [AVAS (Agentic Video Analytics System)](https://arxiv.org/
 - Video download pipeline with caching
 - **Level 1 Baseline RAG**: Fixed 3-second chunks, middle-frame embeddings, top-10 retrieval
 - **Level 2 Semantic RAG**: Semantic merging, multi-frame embeddings, adaptive selection
+- **Level 3 Event Knowledge Graphs**: Entity extraction, graph construction, temporal retrieval
 - Comprehensive evaluation infrastructure with detailed metrics and visualizations
 - Analysis notebooks for cross-level comparison
 
 ### Next Steps
-- Level 3: Event Knowledge Graphs for improved temporal reasoning
 - Level 4: Tri-view retrieval
 - Level 5: Agentic search
 - Level 6: Self-consistency
@@ -108,6 +114,9 @@ python eval.py --level baseline
 
 # Level 2: Semantic RAG evaluation  
 python eval.py --level semantic
+
+# Level 3: Event Knowledge Graph evaluation
+python eval.py --level event
 ```
 
 ## Notes
@@ -116,4 +125,5 @@ python eval.py --level semantic
 - Semantic chunking uses BERTScore threshold of 0.7 for merging decisions
 - Frame budget of 25 per question is distributed across selected chunks
 - Evaluation uses greedy decoding (temperature=0) for reproducibility
-- Level 2+ chunk descriptions generated offline at 1.36 FPS. (~6 FPS in avas with 2 A100's)
+- Level 2+ chunk descriptions generated offline at 1.36 FPS. (~6 FPS in AVAS with 2 A100's)
+- Level 3+ event/entity extraction adds ~50s preprocessing per video

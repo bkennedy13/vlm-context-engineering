@@ -35,8 +35,8 @@ def run_semantic_evaluation(eval_subset_path='data/eval_subset.json',
     # Initialize models
     print("\nInitializing models...")
     video_manager = VideoManager()
-    retriever = MergedChunkRetriever()  # NEW
-    answerer = MergedVLMAnswerer()      # NEW
+    retriever = MergedChunkRetriever()
+    answerer = MergedVLMAnswerer() 
     
     # Check GPU memory
     if torch.cuda.is_available():
@@ -155,6 +155,8 @@ def run_event_evaluation(eval_subset_path='data/eval_subset.json',
     print("Loading evaluation subset...")
     with open(eval_subset_path, 'r') as f:
         eval_samples = json.load(f)
+        
+    # eval_samples = [s for s in eval_samples if s['duration'] == 'medium']
     
     n_videos = len(set(s['video_id'] for s in eval_samples))
     print(f"Loaded {len(eval_samples)} questions from {n_videos} videos")
@@ -193,7 +195,7 @@ def run_event_evaluation(eval_subset_path='data/eval_subset.json',
                 sample['youtube_id'],
                 sample['question'],
                 video_path,
-                k=3,
+                k=10,
                 clip_weight=0.65,
                 text_weight=0.35,
                 gap_threshold=0.05,
@@ -213,7 +215,7 @@ def run_event_evaluation(eval_subset_path='data/eval_subset.json',
                 video_path,
                 sample['question'],
                 sample['options'],
-                frame_budget=25
+                frame_budget=30
             )
             inference_time = time.time() - inference_start
             

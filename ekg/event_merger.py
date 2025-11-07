@@ -29,7 +29,7 @@ class EventMerger:
             descriptions: List of descriptions (one per merged chunk)
             
         Returns:
-            List of event dicts with keys: [event_id, chunk_ids, description, frame_indices, ...]
+            List of event dicts
         """
         if not chunks or not descriptions:
             return []
@@ -40,90 +40,76 @@ class EventMerger:
         # Compute pairwise similarities
         similarities = cosine_similarity(embeddings)
         
-        # Greedy clustering: assign each chunk to an event
+        # SEQUENTIAL MERGING: only compare adjacent chunks
         events = []
-        chunk_to_event = {}  # chunk merged_id -> event_id
+        current_event = None
         
-        MAX_EVENT_DURATION = 120  # 2 minutes in seconds
-        HIGH_SIMILARITY_THRESHOLD = 0.9  # Allow longer events if very similar
+        MAX_EVENT_DURATION = 120  # 2 minutes
+        HIGH_SIMILARITY_THRESHOLD = 0.9
         
         for i, (chunk, description) in enumerate(zip(chunks, descriptions)):
             merged_id = chunk['merged_id']
             
-            # Check if should merge with existing event
-            best_event_idx = None
-            best_similarity = 0
-            
-            for event_idx, event in enumerate(events):
-                # Compare to all chunks in this event
-                event_chunk_indices = event['chunk_indices']
-                event_sims = [similarities[i][j] for j in event_chunk_indices]
-                avg_sim = np.mean(event_sims)
-                
-                if avg_sim > best_similarity:
-                    best_similarity = avg_sim
-                    best_event_idx = event_idx
-            
-            # Merge if similarity above threshold AND duration constraint satisfied
-            if best_event_idx is not None and best_similarity >= self.threshold:
-                # Check duration constraint
-                new_duration = events[best_event_idx]['duration_seconds'] + chunk['length_seconds']
-                
-                # Allow merge if:
-                # 1. Duration stays under limit, OR
-                # 2. Similarity is very high (>0.9)
-                if new_duration <= MAX_EVENT_DURATION or best_similarity >= HIGH_SIMILARITY_THRESHOLD:
-                    events[best_event_idx]['chunk_indices'].append(i)
-                    events[best_event_idx]['chunk_ids'].append(merged_id)
-                    events[best_event_idx]['frame_indices'].extend(chunk['frame_indices'])
-                    events[best_event_idx]['start_time'] = min(
-                        events[best_event_idx]['start_time'], 
-                        chunk['start_time']
-                    )
-                    events[best_event_idx]['end_time'] = max(
-                        events[best_event_idx]['end_time'], 
-                        chunk['end_time']
-                    )
-                    events[best_event_idx]['duration_seconds'] += chunk['length_seconds']
-                    chunk_to_event[merged_id] = best_event_idx
-                else:
-                    # Duration would exceed limit and similarity not high enough
-                    # Create new event instead
-                    event_id = len(events)
-                    events.append({
-                        'event_id': event_id,
-                        'chunk_indices': [i],
-                        'chunk_ids': [merged_id],
-                        'frame_indices': chunk['frame_indices'].copy(),
-                        'start_time': chunk['start_time'],
-                        'end_time': chunk['end_time'],
-                        'duration_seconds': chunk['length_seconds'],
-                        'description': description
-                    })
-                    chunk_to_event[merged_id] = event_id
-            else:
-                # Similarity below threshold, create new event
-                event_id = len(events)
-                events.append({
-                    'event_id': event_id,
+            # Start first event
+            if current_event is None:
+                current_event = {
+                    'event_id': len(events),
                     'chunk_indices': [i],
                     'chunk_ids': [merged_id],
                     'frame_indices': chunk['frame_indices'].copy(),
                     'start_time': chunk['start_time'],
                     'end_time': chunk['end_time'],
                     'duration_seconds': chunk['length_seconds'],
-                    'description': description
-                })
-                chunk_to_event[merged_id] = event_id
+                    'descriptions': [description]  # Track all descriptions
+                }
+                continue
+            
+            # Check if should merge with current event
+            # Compare to ALL chunks in current event (for semantic consistency)
+            event_chunk_indices = current_event['chunk_indices']
+            event_sims = [similarities[i][j] for j in event_chunk_indices]
+            avg_sim = np.mean(event_sims)
+            
+            # Check duration constraint
+            new_duration = current_event['duration_seconds'] + chunk['length_seconds']
+            
+            # Merge conditions:
+            # 1. Similar to current event
+            # 2. Duration within limit OR very high similarity
+            if avg_sim >= self.threshold and \
+            (new_duration <= MAX_EVENT_DURATION or avg_sim >= HIGH_SIMILARITY_THRESHOLD):
+                # Merge into current event
+                current_event['chunk_indices'].append(i)
+                current_event['chunk_ids'].append(merged_id)
+                current_event['frame_indices'].extend(chunk['frame_indices'])
+                current_event['end_time'] = chunk['end_time']  # Update end (sequential)
+                current_event['duration_seconds'] = current_event['end_time'] - current_event['start_time']
+                current_event['descriptions'].append(description)
+            else:
+                # Finalize current event and start new one
+                current_event['description'] = ' '.join(current_event['descriptions'])
+                current_event['frame_indices'] = sorted(list(set(current_event['frame_indices'])))
+                del current_event['descriptions']  # Clean up
+                events.append(current_event)
+                
+                # Start new event
+                current_event = {
+                    'event_id': len(events),
+                    'chunk_indices': [i],
+                    'chunk_ids': [merged_id],
+                    'frame_indices': chunk['frame_indices'].copy(),
+                    'start_time': chunk['start_time'],
+                    'end_time': chunk['end_time'],
+                    'duration_seconds': chunk['length_seconds'],
+                    'descriptions': [description]
+                }
         
-        # Generate merged descriptions for multi-chunk events
-        for event in events:
-            if len(event['chunk_indices']) > 1:
-                # Concatenate descriptions from all chunks
-                chunk_descs = [descriptions[i] for i in event['chunk_indices']]
-                event['description'] = ' '.join(chunk_descs)
-                # Remove duplicate frame indices
-                event['frame_indices'] = sorted(list(set(event['frame_indices'])))
+        # Don't forget the last event!
+        if current_event is not None:
+            current_event['description'] = ' '.join(current_event['descriptions'])
+            current_event['frame_indices'] = sorted(list(set(current_event['frame_indices'])))
+            del current_event['descriptions']
+            events.append(current_event)
         
         return events
     

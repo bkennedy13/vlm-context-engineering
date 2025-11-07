@@ -1,0 +1,658 @@
+{
+  "total_videos": 50,
+  "successful": 50,
+  "failed": 0,
+  "failed_videos": [],
+  "video_stats": [
+    {
+      "youtube_id": "-c8eATXUui8",
+      "stats": {
+        "num_events": 36,
+        "num_entities": 353,
+        "num_relationships": 1060,
+        "relationship_types": {
+          "NEXT": 35,
+          "APPEARS_IN": 583,
+          "CO_OCCURS": 442
+        }
+      }
+    },
+    {
+      "youtube_id": "-yWE13LbFd4",
+      "stats": {
+        "num_events": 61,
+        "num_entities": 362,
+        "num_relationships": 2569,
+        "relationship_types": {
+          "NEXT": 60,
+          "APPEARS_IN": 1015,
+          "CO_OCCURS": 1494
+        }
+      }
+    },
+    {
+      "youtube_id": "2Bns2m5Bg4M",
+      "stats": {
+        "num_events": 11,
+        "num_entities": 63,
+        "num_relationships": 154,
+        "relationship_types": {
+          "NEXT": 10,
+          "APPEARS_IN": 111,
+          "CO_OCCURS": 33
+        }
+      }
+    },
+    {
+      "youtube_id": "2LDriAWltwM",
+      "stats": {
+        "num_events": 39,
+        "num_entities": 316,
+        "num_relationships": 1014,
+        "relationship_types": {
+          "NEXT": 38,
+          "APPEARS_IN": 580,
+          "CO_OCCURS": 396
+        }
+      }
+    },
+    {
+      "youtube_id": "5_fXicEnKKk",
+      "stats": {
+        "num_events": 18,
+        "num_entities": 196,
+        "num_relationships": 314,
+        "relationship_types": {
+          "NEXT": 17,
+          "APPEARS_IN": 271,
+          "CO_OCCURS": 26
+        }
+      }
+    },
+    {
+      "youtube_id": "5wLv3pCqZ9o",
+      "stats": {
+        "num_events": 8,
+        "num_entities": 71,
+        "num_relationships": 177,
+        "relationship_types": {
+          "NEXT": 7,
+          "APPEARS_IN": 118,
+          "CO_OCCURS": 52
+        }
+      }
+    },
+    {
+      "youtube_id": "6DAFkaGUiT4",
+      "stats": {
+        "num_events": 46,
+        "num_entities": 407,
+        "num_relationships": 995,
+        "relationship_types": {
+          "NEXT": 45,
+          "APPEARS_IN": 607,
+          "CO_OCCURS": 343
+        }
+      }
+    },
+    {
+      "youtube_id": "990ci2H9BBc",
+      "stats": {
+        "num_events": 9,
+        "num_entities": 106,
+        "num_relationships": 169,
+        "relationship_types": {
+          "NEXT": 8,
+          "APPEARS_IN": 143,
+          "CO_OCCURS": 18
+        }
+      }
+    },
+    {
+      "youtube_id": "9bbWYVrQgZ8",
+      "stats": {
+        "num_events": 248,
+        "num_entities": 1428,
+        "num_relationships": 10363,
+        "relationship_types": {
+          "NEXT": 247,
+          "APPEARS_IN": 3655,
+          "CO_OCCURS": 6461
+        }
+      }
+    },
+    {
+      "youtube_id": "BrrDT_uYQsg",
+      "stats": {
+        "num_events": 1,
+        "num_entities": 21,
+        "num_relationships": 23,
+        "relationship_types": {
+          "NEXT": 0,
+          "APPEARS_IN": 23,
+          "CO_OCCURS": 0
+        }
+      }
+    },
+    {
+      "youtube_id": "D52rTzibFRc",
+      "stats": {
+        "num_events": 7,
+        "num_entities": 83,
+        "num_relationships": 99,
+        "relationship_types": {
+          "NEXT": 6,
+          "APPEARS_IN": 93,
+          "CO_OCCURS": 0
+        }
+      }
+    },
+    {
+      "youtube_id": "DF_J3vCcbBA",
+      "stats": {
+        "num_events": 10,
+        "num_entities": 95,
+        "num_relationships": 205,
+        "relationship_types": {
+          "NEXT": 9,
+          "APPEARS_IN": 141,
+          "CO_OCCURS": 55
+        }
+      }
+    },
+    {
+      "youtube_id": "G-mmtUxSt5k",
+      "stats": {
+        "num_events": 10,
+        "num_entities": 111,
+        "num_relationships": 185,
+        "relationship_types": {
+          "NEXT": 9,
+          "APPEARS_IN": 150,
+          "CO_OCCURS": 26
+        }
+      }
+    },
+    {
+      "youtube_id": "HLxvq_M4218",
+      "stats": {
+        "num_events": 49,
+        "num_entities": 431,
+        "num_relationships": 1137,
+        "relationship_types": {
+          "NEXT": 48,
+          "APPEARS_IN": 674,
+          "CO_OCCURS": 415
+        }
+      }
+    },
+    {
+      "youtube_id": "Hw5qjcnhrW4",
+      "stats": {
+        "num_events": 6,
+        "num_entities": 68,
+        "num_relationships": 108,
+        "relationship_types": {
+          "NEXT": 5,
+          "APPEARS_IN": 93,
+          "CO_OCCURS": 10
+        }
+      }
+    },
+    {
+      "youtube_id": "I2dv1jNM7gM",
+      "stats": {
+        "num_events": 291,
+        "num_entities": 1653,
+        "num_relationships": 14521,
+        "relationship_types": {
+          "NEXT": 290,
+          "APPEARS_IN": 4707,
+          "CO_OCCURS": 9524
+        }
+      }
+    },
+    {
+      "youtube_id": "K759eXmaMTY",
+      "stats": {
+        "num_events": 51,
+        "num_entities": 504,
+        "num_relationships": 1495,
+        "relationship_types": {
+          "NEXT": 50,
+          "APPEARS_IN": 802,
+          "CO_OCCURS": 643
+        }
+      }
+    },
+    {
+      "youtube_id": "M7WOXFvwbSY",
+      "stats": {
+        "num_events": 6,
+        "num_entities": 57,
+        "num_relationships": 74,
+        "relationship_types": {
+          "NEXT": 5,
+          "APPEARS_IN": 69,
+          "CO_OCCURS": 0
+        }
+      }
+    },
+    {
+      "youtube_id": "MPfuSfiZ96A",
+      "stats": {
+        "num_events": 13,
+        "num_entities": 130,
+        "num_relationships": 202,
+        "relationship_types": {
+          "NEXT": 12,
+          "APPEARS_IN": 179,
+          "CO_OCCURS": 11
+        }
+      }
+    },
+    {
+      "youtube_id": "O0qVPW1fUn4",
+      "stats": {
+        "num_events": 4,
+        "num_entities": 38,
+        "num_relationships": 53,
+        "relationship_types": {
+          "NEXT": 3,
+          "APPEARS_IN": 49,
+          "CO_OCCURS": 1
+        }
+      }
+    },
+    {
+      "youtube_id": "P69idA8JO98",
+      "stats": {
+        "num_events": 40,
+        "num_entities": 368,
+        "num_relationships": 1460,
+        "relationship_types": {
+          "NEXT": 39,
+          "APPEARS_IN": 672,
+          "CO_OCCURS": 749
+        }
+      }
+    },
+    {
+      "youtube_id": "PSyedQl9IiQ",
+      "stats": {
+        "num_events": 13,
+        "num_entities": 116,
+        "num_relationships": 303,
+        "relationship_types": {
+          "NEXT": 12,
+          "APPEARS_IN": 201,
+          "CO_OCCURS": 90
+        }
+      }
+    },
+    {
+      "youtube_id": "QTA8j5wSTx4",
+      "stats": {
+        "num_events": 70,
+        "num_entities": 570,
+        "num_relationships": 1918,
+        "relationship_types": {
+          "NEXT": 69,
+          "APPEARS_IN": 1013,
+          "CO_OCCURS": 836
+        }
+      }
+    },
+    {
+      "youtube_id": "RU8IfXp7LbE",
+      "stats": {
+        "num_events": 11,
+        "num_entities": 111,
+        "num_relationships": 158,
+        "relationship_types": {
+          "NEXT": 10,
+          "APPEARS_IN": 142,
+          "CO_OCCURS": 6
+        }
+      }
+    },
+    {
+      "youtube_id": "S1nUMsPC1-0",
+      "stats": {
+        "num_events": 13,
+        "num_entities": 165,
+        "num_relationships": 223,
+        "relationship_types": {
+          "NEXT": 12,
+          "APPEARS_IN": 203,
+          "CO_OCCURS": 8
+        }
+      }
+    },
+    {
+      "youtube_id": "URUJD5NEXC8",
+      "stats": {
+        "num_events": 36,
+        "num_entities": 266,
+        "num_relationships": 728,
+        "relationship_types": {
+          "NEXT": 35,
+          "APPEARS_IN": 434,
+          "CO_OCCURS": 259
+        }
+      }
+    },
+    {
+      "youtube_id": "VmNBt1tzC6k",
+      "stats": {
+        "num_events": 8,
+        "num_entities": 85,
+        "num_relationships": 145,
+        "relationship_types": {
+          "NEXT": 7,
+          "APPEARS_IN": 117,
+          "CO_OCCURS": 21
+        }
+      }
+    },
+    {
+      "youtube_id": "VsuShNWghXk",
+      "stats": {
+        "num_events": 5,
+        "num_entities": 50,
+        "num_relationships": 62,
+        "relationship_types": {
+          "NEXT": 4,
+          "APPEARS_IN": 58,
+          "CO_OCCURS": 0
+        }
+      }
+    },
+    {
+      "youtube_id": "W86cTIoMv2U",
+      "stats": {
+        "num_events": 9,
+        "num_entities": 98,
+        "num_relationships": 192,
+        "relationship_types": {
+          "NEXT": 8,
+          "APPEARS_IN": 138,
+          "CO_OCCURS": 46
+        }
+      }
+    },
+    {
+      "youtube_id": "WNYi8LUGIZc",
+      "stats": {
+        "num_events": 51,
+        "num_entities": 341,
+        "num_relationships": 1686,
+        "relationship_types": {
+          "NEXT": 50,
+          "APPEARS_IN": 753,
+          "CO_OCCURS": 883
+        }
+      }
+    },
+    {
+      "youtube_id": "XDq08lk5GnQ",
+      "stats": {
+        "num_events": 123,
+        "num_entities": 766,
+        "num_relationships": 4565,
+        "relationship_types": {
+          "NEXT": 122,
+          "APPEARS_IN": 1821,
+          "CO_OCCURS": 2622
+        }
+      }
+    },
+    {
+      "youtube_id": "c66RN87YjNE",
+      "stats": {
+        "num_events": 26,
+        "num_entities": 207,
+        "num_relationships": 819,
+        "relationship_types": {
+          "NEXT": 25,
+          "APPEARS_IN": 401,
+          "CO_OCCURS": 393
+        }
+      }
+    },
+    {
+      "youtube_id": "cFqLEwAvaHI",
+      "stats": {
+        "num_events": 3,
+        "num_entities": 37,
+        "num_relationships": 47,
+        "relationship_types": {
+          "NEXT": 2,
+          "APPEARS_IN": 45,
+          "CO_OCCURS": 0
+        }
+      }
+    },
+    {
+      "youtube_id": "cPlpZdGLa5A",
+      "stats": {
+        "num_events": 15,
+        "num_entities": 122,
+        "num_relationships": 297,
+        "relationship_types": {
+          "NEXT": 14,
+          "APPEARS_IN": 202,
+          "CO_OCCURS": 81
+        }
+      }
+    },
+    {
+      "youtube_id": "dy8AvyRlXpQ",
+      "stats": {
+        "num_events": 4,
+        "num_entities": 53,
+        "num_relationships": 72,
+        "relationship_types": {
+          "NEXT": 3,
+          "APPEARS_IN": 68,
+          "CO_OCCURS": 1
+        }
+      }
+    },
+    {
+      "youtube_id": "e-P5IFTqB98",
+      "stats": {
+        "num_events": 52,
+        "num_entities": 442,
+        "num_relationships": 1238,
+        "relationship_types": {
+          "NEXT": 51,
+          "APPEARS_IN": 711,
+          "CO_OCCURS": 476
+        }
+      }
+    },
+    {
+      "youtube_id": "erjwCQ-UZyw",
+      "stats": {
+        "num_events": 25,
+        "num_entities": 275,
+        "num_relationships": 599,
+        "relationship_types": {
+          "NEXT": 24,
+          "APPEARS_IN": 406,
+          "CO_OCCURS": 169
+        }
+      }
+    },
+    {
+      "youtube_id": "fFjv93ACGo8",
+      "stats": {
+        "num_events": 7,
+        "num_entities": 91,
+        "num_relationships": 119,
+        "relationship_types": {
+          "NEXT": 6,
+          "APPEARS_IN": 110,
+          "CO_OCCURS": 3
+        }
+      }
+    },
+    {
+      "youtube_id": "j7vUGiA-uIE",
+      "stats": {
+        "num_events": 1,
+        "num_entities": 14,
+        "num_relationships": 15,
+        "relationship_types": {
+          "NEXT": 0,
+          "APPEARS_IN": 15,
+          "CO_OCCURS": 0
+        }
+      }
+    },
+    {
+      "youtube_id": "k7iaAhz2md0",
+      "stats": {
+        "num_events": 10,
+        "num_entities": 99,
+        "num_relationships": 198,
+        "relationship_types": {
+          "NEXT": 9,
+          "APPEARS_IN": 144,
+          "CO_OCCURS": 45
+        }
+      }
+    },
+    {
+      "youtube_id": "lsfEHOtYGyk",
+      "stats": {
+        "num_events": 1,
+        "num_entities": 15,
+        "num_relationships": 16,
+        "relationship_types": {
+          "NEXT": 0,
+          "APPEARS_IN": 16,
+          "CO_OCCURS": 0
+        }
+      }
+    },
+    {
+      "youtube_id": "mAwgdX5VxGc",
+      "stats": {
+        "num_events": 35,
+        "num_entities": 243,
+        "num_relationships": 1162,
+        "relationship_types": {
+          "NEXT": 34,
+          "APPEARS_IN": 565,
+          "CO_OCCURS": 563
+        }
+      }
+    },
+    {
+      "youtube_id": "rD5oDjk3IOU",
+      "stats": {
+        "num_events": 297,
+        "num_entities": 1584,
+        "num_relationships": 11239,
+        "relationship_types": {
+          "NEXT": 296,
+          "APPEARS_IN": 4014,
+          "CO_OCCURS": 6929
+        }
+      }
+    },
+    {
+      "youtube_id": "s50vvwTystA",
+      "stats": {
+        "num_events": 1,
+        "num_entities": 19,
+        "num_relationships": 20,
+        "relationship_types": {
+          "NEXT": 0,
+          "APPEARS_IN": 20,
+          "CO_OCCURS": 0
+        }
+      }
+    },
+    {
+      "youtube_id": "tXb_zrHp4H8",
+      "stats": {
+        "num_events": 38,
+        "num_entities": 374,
+        "num_relationships": 946,
+        "relationship_types": {
+          "NEXT": 37,
+          "APPEARS_IN": 580,
+          "CO_OCCURS": 329
+        }
+      }
+    },
+    {
+      "youtube_id": "uqILuTcux_o",
+      "stats": {
+        "num_events": 4,
+        "num_entities": 43,
+        "num_relationships": 66,
+        "relationship_types": {
+          "NEXT": 3,
+          "APPEARS_IN": 57,
+          "CO_OCCURS": 6
+        }
+      }
+    },
+    {
+      "youtube_id": "wdcXmerZWDc",
+      "stats": {
+        "num_events": 72,
+        "num_entities": 636,
+        "num_relationships": 2029,
+        "relationship_types": {
+          "NEXT": 71,
+          "APPEARS_IN": 1087,
+          "CO_OCCURS": 871
+        }
+      }
+    },
+    {
+      "youtube_id": "x1qEBVBxE10",
+      "stats": {
+        "num_events": 52,
+        "num_entities": 301,
+        "num_relationships": 1945,
+        "relationship_types": {
+          "NEXT": 51,
+          "APPEARS_IN": 784,
+          "CO_OCCURS": 1110
+        }
+      }
+    },
+    {
+      "youtube_id": "xIWaK92gRlo",
+      "stats": {
+        "num_events": 37,
+        "num_entities": 262,
+        "num_relationships": 1334,
+        "relationship_types": {
+          "NEXT": 36,
+          "APPEARS_IN": 577,
+          "CO_OCCURS": 721
+        }
+      }
+    },
+    {
+      "youtube_id": "y6ReUXtm_VE",
+      "stats": {
+        "num_events": 5,
+        "num_entities": 57,
+        "num_relationships": 71,
+        "relationship_types": {
+          "NEXT": 4,
+          "APPEARS_IN": 67,
+          "CO_OCCURS": 0
+        }
+      }
+    }
+  ]
+}

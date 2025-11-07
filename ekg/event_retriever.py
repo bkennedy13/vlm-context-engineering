@@ -74,7 +74,6 @@ class EventRetriever:
         cap.release()
         
         # 1. CLIP similarity - compute event embeddings on-the-fly
-        print(f"Computing CLIP embeddings ({frames_per_event} frames/event)...")
         event_clip_embeddings = []
         for event in events:
             clip_emb = self._embed_event_frames(
@@ -102,9 +101,9 @@ class EventRetriever:
         # 3. Combine scores
         combined_sims = clip_weight * clip_sims + text_weight * text_sims
         
-        print(f"  CLIP sims: {clip_sims[:3]} ...")
-        print(f"  Text sims: {text_sims[:3]} ...")
-        print(f"  Combined: {combined_sims[:3]} ...")
+        # print(f"  CLIP sims: {clip_sims[:3]} ...")
+        # print(f"  Text sims: {text_sims[:3]} ...")
+        # print(f"  Combined: {combined_sims[:3]} ...")
         
         # 4. Adaptive selection (vs top)
         sorted_indices = np.argsort(combined_sims)[::-1]
@@ -126,8 +125,8 @@ class EventRetriever:
         retrieved_events = [events[i] for i in top_indices]
         scores = sorted_sims[:n_selected]
         
-        print(f"Retrieved {n_selected} events (CLIP: {clip_weight}, Text: {text_weight})")
-        print(f"Similarities: {scores}")
+        print(f"Retrieved {n_selected} events")
+        # print(f"Similarities: {scores}")
         
         return retrieved_events, scores
     
