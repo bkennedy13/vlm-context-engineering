@@ -18,6 +18,8 @@ from semantic.merged_answerer import MergedVLMAnswerer
 from ekg.event_retriever import EventRetriever
 from ekg.event_answerer import EventAnswerer
 
+from triview.event_retriever import TriViewEventRetriever
+
 
 def run_semantic_evaluation(eval_subset_path='data/eval_subset.json', 
                            output_path='results/level2_semantic_merged.json',
@@ -156,7 +158,7 @@ def run_event_evaluation(eval_subset_path='data/eval_subset.json',
     with open(eval_subset_path, 'r') as f:
         eval_samples = json.load(f)
         
-    # eval_samples = [s for s in eval_samples if s['duration'] == 'medium']
+    # eval_samples = [s for s in eval_samples if s['duration'] == 'long']
     
     n_videos = len(set(s['video_id'] for s in eval_samples))
     print(f"Loaded {len(eval_samples)} questions from {n_videos} videos")
@@ -271,6 +273,133 @@ def run_event_evaluation(eval_subset_path='data/eval_subset.json',
     print(f"\n{'='*60}")
     print("LEVEL 3 EVALUATION COMPLETE")
     print(f"{'='*60}")
+    print(f"Time: {total_time/60:.1f} min")
+    print(f"Results: {output_path}")
+    
+    return results
+
+def run_triview_evaluation(eval_subset_path='data/eval_subset.json',
+                          output_path='results/level4_triview.json',
+                          checkpoint_interval=10):
+    """Run Level 4 tri-view evaluation"""
+    
+    # Load eval subset
+    print("Loading evaluation subset...")
+    with open(eval_subset_path, 'r') as f:
+        eval_samples = json.load(f)
+    
+    # eval_samples = [s for s in eval_samples if s['duration'] == 'long']
+    
+    n_videos = len(set(s['video_id'] for s in eval_samples))
+    print(f"Loaded {len(eval_samples)} questions from {n_videos} videos")
+    
+    video_manager = VideoManager()
+    retriever = TriViewEventRetriever()
+    answerer = EventAnswerer()
+    
+    # Check GPU memory
+    if torch.cuda.is_available():
+        allocated = torch.cuda.memory_allocated() / 1024**3
+        reserved = torch.cuda.memory_reserved() / 1024**3
+        total = torch.cuda.get_device_properties(0).total_memory / 1024**3
+        print(f"\nGPU Memory:")
+        print(f"  Allocated: {allocated:.2f}GB")
+        print(f"  Reserved: {reserved:.2f}GB")
+        print(f"  Total: {total:.2f}GB")
+    
+    results = []
+    start_time = time.time()
+    
+    for i, sample in enumerate(tqdm(eval_samples, desc="Evaluating")):
+        try:
+            video_path = video_manager.get_video(sample['youtube_id'])
+            if not video_path:
+                print(f"\nSkipping {sample['video_id']}: video unavailable")
+                continue
+            
+            # Retrieve events using tri-view
+            retrieval_start = time.time()
+            events, scores, modality_sims = retriever.retrieve_events(
+                sample['youtube_id'],
+                sample['question'],
+                k=5,
+                frame_pooling='mean',
+                rrf_k=30,
+                use_visual=True,
+                use_semantic=True,
+                use_entity=True
+            )
+            retrieval_time = time.time() - retrieval_start
+            
+            if events is None:
+                print(f"\nSkipping {sample['question_id']}")
+                continue
+            
+            # Answer question (reuse Level 3 answerer)
+            inference_start = time.time()
+            predicted = answerer.answer_question(
+                events,
+                video_path,
+                sample['question'],
+                sample['options'],
+                frame_budget=30,
+                include_descriptions=False
+            )
+            inference_time = time.time() - inference_start
+            
+            is_correct = predicted == sample['answer']
+            
+            top_score = float(scores[0]) if len(scores) > 0 else 0.0
+            mean_score = float(np.mean(scores)) if len(scores) > 0 else 0.0
+            
+            result = {
+                'video_id': sample['video_id'],
+                'question_id': sample['question_id'],
+                'task_type': sample['task_type'],
+                'duration': sample['duration'],
+                'question': sample['question'],
+                'predicted': predicted,
+                'correct': sample['answer'],
+                'is_correct': is_correct,
+                'retrieval_time': retrieval_time,
+                'inference_time': inference_time,
+                'num_events': len(events) if events else 0,
+                'top_rrf_score': top_score,
+                'mean_rrf_score': mean_score,
+            }
+            
+            # Add per-modality similarities
+            for modality, sims in modality_sims.items():
+                result[f'{modality}_top_sim'] = float(sims[0]) if len(sims) > 0 else 0.0
+                result[f'{modality}_mean_sim'] = float(np.mean(sims)) if len(sims) > 0 else 0.0
+            
+            results.append(result)
+            
+            # Cleanup
+            del events, scores, modality_sims
+            torch.cuda.empty_cache()
+            
+            # Memory check
+            if torch.cuda.is_available() and (i + 1) % 10 == 0:
+                allocated = torch.cuda.memory_allocated() / 1024**3
+                print(f"\nGPU Memory: {allocated:.2f}GB")
+            
+            # Checkpoint
+            if (i + 1) % checkpoint_interval == 0:
+                checkpoint_path = output_path.replace('.json', f'_checkpoint_{i+1}.json')
+                save_triview_results(results, checkpoint_path, partial=True)
+                print(f"\nCheckpoint: {len(results)} results")
+                
+        except Exception as e:
+            print(f"\nError: {sample['question_id']}: {e}")
+            import traceback
+            traceback.print_exc()
+            continue
+    
+    total_time = time.time() - start_time
+    save_triview_results(results, output_path, total_time=total_time)
+    
+    print("LEVEL 4 EVALUATION COMPLETE")
     print(f"Time: {total_time/60:.1f} min")
     print(f"Results: {output_path}")
     
@@ -444,6 +573,112 @@ def save_event_results(results, output_path, partial=False, total_time=None):
         print(f"Retrieval: {output['avg_retrieval_time']:.2f}s")
         print(f"Inference: {output['avg_inference_time']:.2f}s")
         print(f"Avg events: {event_stats['avg_events_per_question']:.1f}")
+        
+        print("\nBy Task:")
+        for task, stats in sorted(task_stats.items(), key=lambda x: -x[1]['accuracy'])[:5]:
+            print(f"  {task}: {stats['accuracy']:.2%} ({stats['correct']}/{stats['total']})")
+        
+        print("\nBy Duration:")
+        for dur in ['short', 'medium', 'long']:
+            stats = duration_stats[dur]
+            print(f"  {dur}: {stats['accuracy']:.2%} ({stats['correct']}/{stats['total']}) | "
+                  f"{stats['avg_events_used']:.1f} events")
+
+def save_triview_results(results, output_path, partial=False, total_time=None):
+    """Save Level 4 tri-view evaluation results"""
+    
+    if not results:
+        print("No results to save")
+        return
+    
+    total = len(results)
+    correct = sum(r['is_correct'] for r in results)
+    accuracy = correct / total if total > 0 else 0
+    
+    # Task type breakdown
+    task_stats = {}
+    for task in set(r['task_type'] for r in results):
+        task_results = [r for r in results if r['task_type'] == task]
+        task_correct = sum(r['is_correct'] for r in task_results)
+        task_stats[task] = {
+            'total': len(task_results),
+            'correct': task_correct,
+            'accuracy': task_correct / len(task_results) if task_results else 0
+        }
+    
+    # Duration breakdown
+    duration_stats = {}
+    for duration in ['short', 'medium', 'long']:
+        dur_results = [r for r in results if r['duration'] == duration]
+        dur_correct = sum(r['is_correct'] for r in dur_results)
+        duration_stats[duration] = {
+            'total': len(dur_results),
+            'correct': dur_correct,
+            'accuracy': dur_correct / len(dur_results) if dur_results else 0,
+            'avg_retrieval_time': float(np.mean([r['retrieval_time'] for r in dur_results])) if dur_results else 0,
+            'avg_inference_time': float(np.mean([r['inference_time'] for r in dur_results])) if dur_results else 0,
+            'avg_events_used': float(np.mean([r['num_events'] for r in dur_results])) if dur_results else 0
+        }
+    
+    # Tri-view specific statistics
+    triview_stats = {
+        'avg_events_per_question': float(np.mean([r['num_events'] for r in results])) if results else 0,
+        'avg_top_rrf_score': float(np.mean([r['top_rrf_score'] for r in results])) if results else 0,
+        'avg_mean_rrf_score': float(np.mean([r['mean_rrf_score'] for r in results])) if results else 0,
+    }
+    
+    # Per-modality statistics (if available)
+    modality_stats = {}
+    for modality in ['visual', 'semantic', 'entity']:
+        top_key = f'{modality}_top_sim'
+        mean_key = f'{modality}_mean_sim'
+        
+        if any(top_key in r for r in results):
+            modality_stats[modality] = {
+                'avg_top_similarity': float(np.mean([r.get(top_key, 0) for r in results])),
+                'avg_mean_similarity': float(np.mean([r.get(mean_key, 0) for r in results]))
+            }
+    
+    triview_stats['modality_similarities'] = modality_stats
+    
+    output = {
+        'level': 'level4_triview',
+        'config': {
+            'k': 10,
+            'frame_budget': 30,
+            'frame_pooling': 'mean',
+            'rrf_k': 60,
+            'retrieval': 'triview_rrf',
+            'answering_model': 'Qwen2.5-VL-7B-Instruct'
+        },
+        'partial': partial,
+        'total_questions': total,
+        'correct': correct,
+        'accuracy': accuracy,
+        'avg_retrieval_time': float(np.mean([r['retrieval_time'] for r in results])) if results else 0,
+        'avg_inference_time': float(np.mean([r['inference_time'] for r in results])) if results else 0,
+        'total_time': total_time,
+        'task_type_stats': task_stats,
+        'duration_stats': duration_stats,
+        'triview_stats': triview_stats,
+        'results': results
+    }
+    
+    Path(output_path).parent.mkdir(exist_ok=True)
+    with open(output_path, 'w') as f:
+        json.dump(output, f, indent=2)
+    
+    if not partial:
+        print(f"\nAccuracy: {accuracy:.2%} ({correct}/{total})")
+        print(f"Retrieval: {output['avg_retrieval_time']:.2f}s")
+        print(f"Inference: {output['avg_inference_time']:.2f}s")
+        print(f"Avg events: {triview_stats['avg_events_per_question']:.1f}")
+        
+        # Per-modality similarities
+        if modality_stats:
+            print("\nPer-Modality Similarities:")
+            for modality, stats in modality_stats.items():
+                print(f"  {modality}: top={stats['avg_top_similarity']:.3f}, mean={stats['avg_mean_similarity']:.3f}")
         
         print("\nBy Task:")
         for task, stats in sorted(task_stats.items(), key=lambda x: -x[1]['accuracy'])[:5]:
@@ -634,6 +869,9 @@ def main():
     elif args.level == 'events':
         print("Running Level 3: Event-Based Evaluation")
         results = run_event_evaluation()
+    elif args.level == 'triview':
+        print("Running Level 4: Tri-View Evaluation")
+        results = run_triview_evaluation()
     else:
         print(f"Level {args.level} not yet implemented")
         return

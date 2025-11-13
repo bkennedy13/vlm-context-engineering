@@ -1,0 +1,260 @@
+{
+  "total_videos": 50,
+  "successful": 50,
+  "failed": 0,
+  "failed_videos": [],
+  "total_preprocessing_time": 510.28693151474,
+  "avg_preprocessing_time": 10.2057386302948,
+  "video_stats": [
+    {
+      "youtube_id": "-c8eATXUui8",
+      "num_events": 36,
+      "preprocessing_time": 19.228868007659912
+    },
+    {
+      "youtube_id": "-yWE13LbFd4",
+      "num_events": 61,
+      "preprocessing_time": 28.27641797065735
+    },
+    {
+      "youtube_id": "2Bns2m5Bg4M",
+      "num_events": 11,
+      "preprocessing_time": 4.53913140296936
+    },
+    {
+      "youtube_id": "2LDriAWltwM",
+      "num_events": 39,
+      "preprocessing_time": 29.102360248565674
+    },
+    {
+      "youtube_id": "5_fXicEnKKk",
+      "num_events": 18,
+      "preprocessing_time": 2.0561437606811523
+    },
+    {
+      "youtube_id": "5wLv3pCqZ9o",
+      "num_events": 8,
+      "preprocessing_time": 1.3217203617095947
+    },
+    {
+      "youtube_id": "6DAFkaGUiT4",
+      "num_events": 46,
+      "preprocessing_time": 7.286754131317139
+    },
+    {
+      "youtube_id": "990ci2H9BBc",
+      "num_events": 9,
+      "preprocessing_time": 1.7458021640777588
+    },
+    {
+      "youtube_id": "9bbWYVrQgZ8",
+      "num_events": 248,
+      "preprocessing_time": 45.715227127075195
+    },
+    {
+      "youtube_id": "BrrDT_uYQsg",
+      "num_events": 1,
+      "preprocessing_time": 0.7993109226226807
+    },
+    {
+      "youtube_id": "D52rTzibFRc",
+      "num_events": 7,
+      "preprocessing_time": 1.5859041213989258
+    },
+    {
+      "youtube_id": "DF_J3vCcbBA",
+      "num_events": 10,
+      "preprocessing_time": 1.908940076828003
+    },
+    {
+      "youtube_id": "G-mmtUxSt5k",
+      "num_events": 10,
+      "preprocessing_time": 4.002553224563599
+    },
+    {
+      "youtube_id": "HLxvq_M4218",
+      "num_events": 49,
+      "preprocessing_time": 7.282041072845459
+    },
+    {
+      "youtube_id": "Hw5qjcnhrW4",
+      "num_events": 6,
+      "preprocessing_time": 3.2644286155700684
+    },
+    {
+      "youtube_id": "I2dv1jNM7gM",
+      "num_events": 291,
+      "preprocessing_time": 40.12437701225281
+    },
+    {
+      "youtube_id": "K759eXmaMTY",
+      "num_events": 51,
+      "preprocessing_time": 11.220405578613281
+    },
+    {
+      "youtube_id": "M7WOXFvwbSY",
+      "num_events": 6,
+      "preprocessing_time": 1.736236572265625
+    },
+    {
+      "youtube_id": "MPfuSfiZ96A",
+      "num_events": 13,
+      "preprocessing_time": 1.682957649230957
+    },
+    {
+      "youtube_id": "O0qVPW1fUn4",
+      "num_events": 4,
+      "preprocessing_time": 1.1827595233917236
+    },
+    {
+      "youtube_id": "P69idA8JO98",
+      "num_events": 40,
+      "preprocessing_time": 23.905280828475952
+    },
+    {
+      "youtube_id": "PSyedQl9IiQ",
+      "num_events": 13,
+      "preprocessing_time": 4.236484050750732
+    },
+    {
+      "youtube_id": "QTA8j5wSTx4",
+      "num_events": 70,
+      "preprocessing_time": 10.497367858886719
+    },
+    {
+      "youtube_id": "RU8IfXp7LbE",
+      "num_events": 11,
+      "preprocessing_time": 1.6898000240325928
+    },
+    {
+      "youtube_id": "S1nUMsPC1-0",
+      "num_events": 13,
+      "preprocessing_time": 1.7677638530731201
+    },
+    {
+      "youtube_id": "URUJD5NEXC8",
+      "num_events": 36,
+      "preprocessing_time": 7.8882012367248535
+    },
+    {
+      "youtube_id": "VmNBt1tzC6k",
+      "num_events": 8,
+      "preprocessing_time": 1.7355413436889648
+    },
+    {
+      "youtube_id": "VsuShNWghXk",
+      "num_events": 5,
+      "preprocessing_time": 1.3169209957122803
+    },
+    {
+      "youtube_id": "W86cTIoMv2U",
+      "num_events": 9,
+      "preprocessing_time": 1.8761279582977295
+    },
+    {
+      "youtube_id": "WNYi8LUGIZc",
+      "num_events": 51,
+      "preprocessing_time": 11.057446241378784
+    },
+    {
+      "youtube_id": "XDq08lk5GnQ",
+      "num_events": 123,
+      "preprocessing_time": 35.02039957046509
+    },
+    {
+      "youtube_id": "c66RN87YjNE",
+      "num_events": 26,
+      "preprocessing_time": 9.093768119812012
+    },
+    {
+      "youtube_id": "cFqLEwAvaHI",
+      "num_events": 3,
+      "preprocessing_time": 2.9797182083129883
+    },
+    {
+      "youtube_id": "cPlpZdGLa5A",
+      "num_events": 15,
+      "preprocessing_time": 5.61595606803894
+    },
+    {
+      "youtube_id": "dy8AvyRlXpQ",
+      "num_events": 4,
+      "preprocessing_time": 6.4335103034973145
+    },
+    {
+      "youtube_id": "e-P5IFTqB98",
+      "num_events": 52,
+      "preprocessing_time": 7.042410373687744
+    },
+    {
+      "youtube_id": "erjwCQ-UZyw",
+      "num_events": 25,
+      "preprocessing_time": 8.481866598129272
+    },
+    {
+      "youtube_id": "fFjv93ACGo8",
+      "num_events": 7,
+      "preprocessing_time": 1.5446650981903076
+    },
+    {
+      "youtube_id": "j7vUGiA-uIE",
+      "num_events": 1,
+      "preprocessing_time": 0.8086016178131104
+    },
+    {
+      "youtube_id": "k7iaAhz2md0",
+      "num_events": 10,
+      "preprocessing_time": 4.922787189483643
+    },
+    {
+      "youtube_id": "lsfEHOtYGyk",
+      "num_events": 1,
+      "preprocessing_time": 0.38718271255493164
+    },
+    {
+      "youtube_id": "mAwgdX5VxGc",
+      "num_events": 35,
+      "preprocessing_time": 22.01905131340027
+    },
+    {
+      "youtube_id": "rD5oDjk3IOU",
+      "num_events": 297,
+      "preprocessing_time": 52.155723571777344
+    },
+    {
+      "youtube_id": "s50vvwTystA",
+      "num_events": 1,
+      "preprocessing_time": 0.6925492286682129
+    },
+    {
+      "youtube_id": "tXb_zrHp4H8",
+      "num_events": 38,
+      "preprocessing_time": 9.513041496276855
+    },
+    {
+      "youtube_id": "uqILuTcux_o",
+      "num_events": 4,
+      "preprocessing_time": 1.4953570365905762
+    },
+    {
+      "youtube_id": "wdcXmerZWDc",
+      "num_events": 72,
+      "preprocessing_time": 13.312127828598022
+    },
+    {
+      "youtube_id": "x1qEBVBxE10",
+      "num_events": 52,
+      "preprocessing_time": 22.68880796432495
+    },
+    {
+      "youtube_id": "xIWaK92gRlo",
+      "num_events": 37,
+      "preprocessing_time": 25.331528663635254
+    },
+    {
+      "youtube_id": "y6ReUXtm_VE",
+      "num_events": 5,
+      "preprocessing_time": 0.7146046161651611
+    }
+  ]
+}

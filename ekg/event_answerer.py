@@ -25,7 +25,7 @@ class EventAnswerer:
         self.processor = AutoProcessor.from_pretrained(model_name)
         print(f"EventAnswerer loaded on {self.device}")
     
-    def answer_question(self, events, video_path, question, options, frame_budget=25):
+    def answer_question(self, events, video_path, question, options, frame_budget=25, include_descriptions=True):
         """Generate answer from retrieved events."""
         # Extract all video frames at 1 FPS
         all_frames = self._extract_video_frames(video_path)
@@ -86,12 +86,12 @@ class EventAnswerer:
             if frames_for_event <= 0:
                 continue
             
-            # Add event description with timestamp
-            content.append({
-                "type": "text",
-                "text": f"Event {i+1} ({event['start_time']:.1f}s - {event['end_time']:.1f}s): {event['description'][:3000]}"
-            })
-            
+            if include_descriptions:
+                content.append({
+                    "type": "text",
+                    "text": f"Event {i+1} ({event['start_time']:.1f}s - {event['end_time']:.1f}s): {event['description'][:3000]}"
+                })
+                    
             # debugging
             print(f"Event {i+1} ({event['start_time']:.1f}s - {event['end_time']:.1f}s)")
             
