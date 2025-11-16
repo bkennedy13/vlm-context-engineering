@@ -1,0 +1,2402 @@
+[
+  {
+    "video_id": "058",
+    "youtube_id": "D52rTzibFRc",
+    "url": "https://www.youtube.com/watch?v=D52rTzibFRc",
+    "question": "Based on the information provided by the video, which one is the most direct cause of the phenomenon that the smoke flows towards the lamp?",
+    "options": [
+      "A. Light makes the smoke more obvious to our eyes.",
+      "B. Near the lamp, the temperature rises.",
+      "C. There is a vacuum cleaner near the lamp.",
+      "D. The lamps attracts insects and the flying insects fan the smoke towards the lamp."
+    ],
+    "answer": "B",
+    "task_type": "Spatial Reasoning",
+    "question_id": "058-1",
+    "duration": "short"
+  },
+  {
+    "video_id": "058",
+    "youtube_id": "D52rTzibFRc",
+    "url": "https://www.youtube.com/watch?v=D52rTzibFRc",
+    "question": "Which color are the mountains in the video?",
+    "options": [
+      "A. Brown.",
+      "B. Blue.",
+      "C. Green.",
+      "D. Purple."
+    ],
+    "answer": "D",
+    "task_type": "Attribute Perception",
+    "question_id": "058-2",
+    "duration": "short"
+  },
+  {
+    "video_id": "058",
+    "youtube_id": "D52rTzibFRc",
+    "url": "https://www.youtube.com/watch?v=D52rTzibFRc",
+    "question": "What is one of the causes of wind according to the video?",
+    "options": [
+      "A. The sun is like a lamp.",
+      "B. The sea is cooler than the ground, and thus the sea wind forms.",
+      "C. The earth's rotaion changes as it orbits, and thus the temperature in a certain place changes.",
+      "D. The sun generates solar winds."
+    ],
+    "answer": "C",
+    "task_type": "Spatial Reasoning",
+    "question_id": "058-3",
+    "duration": "short"
+  },
+  {
+    "video_id": "013",
+    "youtube_id": "5wLv3pCqZ9o",
+    "url": "https://www.youtube.com/watch?v=5wLv3pCqZ9o",
+    "question": "Which of the following is visible in the background of the video when the miniature bottle is shown empty?",
+    "options": [
+      "A. Water.",
+      "B. Cork.",
+      "C. Shells.",
+      "D. Star."
+    ],
+    "answer": "C",
+    "task_type": "Spatial Perception",
+    "question_id": "013-1",
+    "duration": "short"
+  },
+  {
+    "video_id": "013",
+    "youtube_id": "5wLv3pCqZ9o",
+    "url": "https://www.youtube.com/watch?v=5wLv3pCqZ9o",
+    "question": "According to the video, which of the following ingredients is not used in the artwork?",
+    "options": [
+      "A. Shell.",
+      "B. Glue.",
+      "C. Blue Food Dye.",
+      "D. Oil."
+    ],
+    "answer": "A",
+    "task_type": "Action Reasoning",
+    "question_id": "013-2",
+    "duration": "short"
+  },
+  {
+    "video_id": "013",
+    "youtube_id": "5wLv3pCqZ9o",
+    "url": "https://www.youtube.com/watch?v=5wLv3pCqZ9o",
+    "question": "What was the next step taken by the operator after filling the bottle with oil?",
+    "options": [
+      "A. Applied glue to cork.",
+      "B. Added blue food dye.",
+      "C. Added 1/3 water.",
+      "D. Put the cork on the bottle."
+    ],
+    "answer": "A",
+    "task_type": "Action Recognition",
+    "question_id": "013-3",
+    "duration": "short"
+  },
+  {
+    "video_id": "141",
+    "youtube_id": "lsfEHOtYGyk",
+    "url": "https://www.youtube.com/watch?v=lsfEHOtYGyk",
+    "question": "Which player does the video call for to finally put the ball in the basket?",
+    "options": [
+      "A. Player number 2.",
+      "B. Player number 4.",
+      "C. Player number 1.",
+      "D. Player number 3."
+    ],
+    "answer": "A",
+    "task_type": "Action Recognition",
+    "question_id": "141-1",
+    "duration": "short"
+  },
+  {
+    "video_id": "141",
+    "youtube_id": "lsfEHOtYGyk",
+    "url": "https://www.youtube.com/watch?v=lsfEHOtYGyk",
+    "question": "Which player is running the pick-and-roll for the other players?",
+    "options": [
+      "A. Player number 5.",
+      "B. Player number 4.",
+      "C. Player number 2.",
+      "D. Player number 3."
+    ],
+    "answer": "B",
+    "task_type": "Action Recognition",
+    "question_id": "141-2",
+    "duration": "short"
+  },
+  {
+    "video_id": "141",
+    "youtube_id": "lsfEHOtYGyk",
+    "url": "https://www.youtube.com/watch?v=lsfEHOtYGyk",
+    "question": "Which sport's tactics are shown in the video?",
+    "options": [
+      "A. Basketball.",
+      "B. Soccer.",
+      "C. Rugby.",
+      "D. Baseball."
+    ],
+    "answer": "A",
+    "task_type": "Object Recognition",
+    "question_id": "141-3",
+    "duration": "short"
+  },
+  {
+    "video_id": "126",
+    "youtube_id": "y6ReUXtm_VE",
+    "url": "https://www.youtube.com/watch?v=y6ReUXtm_VE",
+    "question": "What is the atmosphere portrayed in the video like?",
+    "options": [
+      "A. Sad.",
+      "B. Tense.",
+      "C. Joyful.",
+      "D. Solemn."
+    ],
+    "answer": "D",
+    "task_type": "Spatial Reasoning",
+    "question_id": "126-1",
+    "duration": "short"
+  },
+  {
+    "video_id": "126",
+    "youtube_id": "y6ReUXtm_VE",
+    "url": "https://www.youtube.com/watch?v=y6ReUXtm_VE",
+    "question": "What is the reason for entering cold water in the video during the winter season?",
+    "options": [
+      "A. Not mentioned in the video.",
+      "B. It is a religious act.",
+      "C. To challenge themselves.",
+      "D. For health benefits."
+    ],
+    "answer": "B",
+    "task_type": "Action Reasoning",
+    "question_id": "126-2",
+    "duration": "short"
+  },
+  {
+    "video_id": "126",
+    "youtube_id": "y6ReUXtm_VE",
+    "url": "https://www.youtube.com/watch?v=y6ReUXtm_VE",
+    "question": "What is the approximate temperature shown in the video?",
+    "options": [
+      "A. Around 0 degrees centigrade.",
+      "B. Around -5 degrees centigrade.",
+      "C. Around -10 degrees centigrade.",
+      "D. Around -15 degrees centigrade."
+    ],
+    "answer": "B",
+    "task_type": "OCR Problems",
+    "question_id": "126-3",
+    "duration": "short"
+  },
+  {
+    "video_id": "115",
+    "youtube_id": "W86cTIoMv2U",
+    "url": "https://www.youtube.com/watch?v=W86cTIoMv2U",
+    "question": "What is the color pattern of the cat in the video?",
+    "options": [
+      "A. Black and white.",
+      "B. Calico.",
+      "C. Solid.",
+      "D. Spotted."
+    ],
+    "answer": "D",
+    "task_type": "Attribute Perception",
+    "question_id": "115-1",
+    "duration": "short"
+  },
+  {
+    "video_id": "115",
+    "youtube_id": "W86cTIoMv2U",
+    "url": "https://www.youtube.com/watch?v=W86cTIoMv2U",
+    "question": "According to the video, what is the age range of the cat in the video?",
+    "options": [
+      "A. Near adulthood.",
+      "B. Kitten.",
+      "C. Indeterminable.",
+      "D. Senior cat."
+    ],
+    "answer": "B",
+    "task_type": "OCR Problems",
+    "question_id": "115-2",
+    "duration": "short"
+  },
+  {
+    "video_id": "115",
+    "youtube_id": "W86cTIoMv2U",
+    "url": "https://www.youtube.com/watch?v=W86cTIoMv2U",
+    "question": "How many streams did the cat cross in the video?",
+    "options": [
+      "A. 2.",
+      "B. 1.",
+      "C. 3.",
+      "D. 4."
+    ],
+    "answer": "A",
+    "task_type": "Counting Problem",
+    "question_id": "115-3",
+    "duration": "short"
+  },
+  {
+    "video_id": "072",
+    "youtube_id": "VsuShNWghXk",
+    "url": "https://www.youtube.com/watch?v=VsuShNWghXk",
+    "question": "Which item does not the man wear in this video?",
+    "options": [
+      "A. Gloves.",
+      "B. A helmet.",
+      "C. Knee pads.",
+      "D. Elbow pads."
+    ],
+    "answer": "A",
+    "task_type": "Object Recognition",
+    "question_id": "072-1",
+    "duration": "short"
+  },
+  {
+    "video_id": "072",
+    "youtube_id": "VsuShNWghXk",
+    "url": "https://www.youtube.com/watch?v=VsuShNWghXk",
+    "question": "According to the video, what is the right pose demonstrated in the animation when sitting on the bike before starting to ride?",
+    "options": [
+      "A. Sitting backwards on the bike with both feet on the handlebars, ready to push off and start riding.",
+      "B. Sitting sideways on the bike with the left foot on the ground and the right foot resting on the pedal.",
+      "C. Sitting on the bike with both feet on the ground, not engaging with the pedals.",
+      "D. Sitting on the bike seat with the right foot on the ground and the left foot resting on the pedal."
+    ],
+    "answer": "D",
+    "task_type": "Action Recognition",
+    "question_id": "072-2",
+    "duration": "short"
+  },
+  {
+    "video_id": "072",
+    "youtube_id": "VsuShNWghXk",
+    "url": "https://www.youtube.com/watch?v=VsuShNWghXk",
+    "question": "What is the sequence of steps introduced in this video?\n(a) Walk and practice using the brakes.\n(b) Glide to practice balancing.\n(c) Find a good space and safety considerations.\n(d) Start to pedal.\n(e) Adjust the seat.",
+    "options": [
+      "A. (c)(a)(d)(e)(b).",
+      "B. (c)(e)(a)(b)(d).",
+      "C. (a)(c)(e)(b)(d).",
+      "D. (a)(e)(b)(c)(d)."
+    ],
+    "answer": "B",
+    "task_type": "Temporal Reasoning",
+    "question_id": "072-3",
+    "duration": "short"
+  },
+  {
+    "video_id": "053",
+    "youtube_id": "DF_J3vCcbBA",
+    "url": "https://www.youtube.com/watch?v=DF_J3vCcbBA",
+    "question": "How does the color of lava change when exposed to the air for a short while?",
+    "options": [
+      "A. It turns blue.",
+      "B. It turns red.",
+      "C. It turns silver.",
+      "D. It turns black."
+    ],
+    "answer": "C",
+    "task_type": "Attribute Perception",
+    "question_id": "053-1",
+    "duration": "short"
+  },
+  {
+    "video_id": "053",
+    "youtube_id": "DF_J3vCcbBA",
+    "url": "https://www.youtube.com/watch?v=DF_J3vCcbBA",
+    "question": "According to the video, how do the geologists collect lava safely?",
+    "options": [
+      "A. They use shovel to collects lava safely.",
+      "B. They wear black mask when collecting lava.",
+      "C. They manipulate drones to collect magma.",
+      "D. They stay far away from the lava."
+    ],
+    "answer": "B",
+    "task_type": "Action Recognition",
+    "question_id": "053-2",
+    "duration": "short"
+  },
+  {
+    "video_id": "053",
+    "youtube_id": "DF_J3vCcbBA",
+    "url": "https://www.youtube.com/watch?v=DF_J3vCcbBA",
+    "question": "How do the geologists cool the lava down?",
+    "options": [
+      "A. By special oily coolant.",
+      "B. By leaving the lava on the ground.",
+      "C. By water.",
+      "D. By ice."
+    ],
+    "answer": "C",
+    "task_type": "Action Reasoning",
+    "question_id": "053-3",
+    "duration": "short"
+  },
+  {
+    "video_id": "280",
+    "youtube_id": "S1nUMsPC1-0",
+    "url": "https://www.youtube.com/watch?v=S1nUMsPC1-0",
+    "question": "Which kind of pets is not introduced in this video?",
+    "options": [
+      "A. Dogs.",
+      "B. Monkeys.",
+      "C. Turtles.",
+      "D. None of the above."
+    ],
+    "answer": "D",
+    "task_type": "Object Recognition",
+    "question_id": "280-1",
+    "duration": "short"
+  },
+  {
+    "video_id": "280",
+    "youtube_id": "S1nUMsPC1-0",
+    "url": "https://www.youtube.com/watch?v=S1nUMsPC1-0",
+    "question": "How many people are in the family that is playing with a dog at the end of the video?",
+    "options": [
+      "A. 3.",
+      "B. 4.",
+      "C. 5.",
+      "D. 6."
+    ],
+    "answer": "B",
+    "task_type": "Object Recognition",
+    "question_id": "280-2",
+    "duration": "short"
+  },
+  {
+    "video_id": "280",
+    "youtube_id": "S1nUMsPC1-0",
+    "url": "https://www.youtube.com/watch?v=S1nUMsPC1-0",
+    "question": "Which color of fish is absent from the video?",
+    "options": [
+      "A. Orange.",
+      "B. Blue.",
+      "C. Green.",
+      "D. Red."
+    ],
+    "answer": "D",
+    "task_type": "Attribute Perception",
+    "question_id": "280-3",
+    "duration": "short"
+  },
+  {
+    "video_id": "045",
+    "youtube_id": "990ci2H9BBc",
+    "url": "https://www.youtube.com/watch?v=990ci2H9BBc",
+    "question": "What astronomical phenomenon is depicted in the video?",
+    "options": [
+      "A. Solar flare.",
+      "B. Observed black hole.",
+      "C. Total solar eclipse.",
+      "D. Mirage."
+    ],
+    "answer": "C",
+    "task_type": "Object Recognition",
+    "question_id": "045-1",
+    "duration": "short"
+  },
+  {
+    "video_id": "045",
+    "youtube_id": "990ci2H9BBc",
+    "url": "https://www.youtube.com/watch?v=990ci2H9BBc",
+    "question": "Which of the following is NOT known to occur during a total solar eclipse, according to the video?",
+    "options": [
+      "A. Temperature drop.",
+      "B. Appearance of snakes.",
+      "C. Appearance of planets and stars.",
+      "D. Appearance of rare shadow bands."
+    ],
+    "answer": "B",
+    "task_type": "Action Recognition",
+    "question_id": "045-2",
+    "duration": "short"
+  },
+  {
+    "video_id": "045",
+    "youtube_id": "990ci2H9BBc",
+    "url": "https://www.youtube.com/watch?v=990ci2H9BBc",
+    "question": "Where were the people in the video located while observing the total solar eclipse?",
+    "options": [
+      "A. Stadium.",
+      "B. Nature park.",
+      "C. Street.",
+      "D. Rooftop."
+    ],
+    "answer": "A",
+    "task_type": "Object Recognition",
+    "question_id": "045-3",
+    "duration": "short"
+  },
+  {
+    "video_id": "217",
+    "youtube_id": "BrrDT_uYQsg",
+    "url": "https://www.youtube.com/watch?v=BrrDT_uYQsg",
+    "question": "What is the physique of the athletes?",
+    "options": [
+      "A. Three of them have a strong build, while one is thin.",
+      "B. All of them have a strong build.",
+      "C. All of them have a thin physique.",
+      "D. None of the above options is correct."
+    ],
+    "answer": "A",
+    "task_type": "Attribute Perception",
+    "question_id": "217-1",
+    "duration": "short"
+  },
+  {
+    "video_id": "217",
+    "youtube_id": "BrrDT_uYQsg",
+    "url": "https://www.youtube.com/watch?v=BrrDT_uYQsg",
+    "question": "Which sports in this video involve athletes utilizing humans as tools?",
+    "options": [
+      "A. Hula hooping.",
+      "B. Nunchakus.",
+      "C. Horse-vaulting.",
+      "D. Rope jumping."
+    ],
+    "answer": "D",
+    "task_type": "Action Recognition",
+    "question_id": "217-2",
+    "duration": "short"
+  },
+  {
+    "video_id": "217",
+    "youtube_id": "BrrDT_uYQsg",
+    "url": "https://www.youtube.com/watch?v=BrrDT_uYQsg",
+    "question": "What do the athletes wear during their performance?",
+    "options": [
+      "A. Red shorts and red pants.",
+      "B. Yellow shorts and red pants.",
+      "C. Yellow shorts and yellow pants.",
+      "D. Red shorts and yellow pants."
+    ],
+    "answer": "B",
+    "task_type": "Object Recognition",
+    "question_id": "217-3",
+    "duration": "short"
+  },
+  {
+    "video_id": "017",
+    "youtube_id": "O0qVPW1fUn4",
+    "url": "https://www.youtube.com/watch?v=O0qVPW1fUn4",
+    "question": "Based on the information provided by the video, what is the maximum number of fingers required to play this piece of music?",
+    "options": [
+      "A. Three.",
+      "B. Ten.",
+      "C. Four.",
+      "D. Five."
+    ],
+    "answer": "C",
+    "task_type": "Counting Problem",
+    "question_id": "017-1",
+    "duration": "short"
+  },
+  {
+    "video_id": "017",
+    "youtube_id": "O0qVPW1fUn4",
+    "url": "https://www.youtube.com/watch?v=O0qVPW1fUn4",
+    "question": "What do the characters in this video mean?",
+    "options": [
+      "A. Volume.",
+      "B. Scale.",
+      "C. Note.",
+      "D. Strength of pressing the piano keys."
+    ],
+    "answer": "B",
+    "task_type": "Object Reasoning",
+    "question_id": "017-2",
+    "duration": "short"
+  },
+  {
+    "video_id": "017",
+    "youtube_id": "O0qVPW1fUn4",
+    "url": "https://www.youtube.com/watch?v=O0qVPW1fUn4",
+    "question": "In this video, why some keys are blue while others are green?",
+    "options": [
+      "A. Because it indicates the hand to play them.",
+      "B. Because it can help to make the video more colorful.",
+      "C. Because the YouTuber love these two colors.",
+      "D. Because keys on the special piano are eithor blue or green."
+    ],
+    "answer": "A",
+    "task_type": "Object Reasoning",
+    "question_id": "017-3",
+    "duration": "short"
+  },
+  {
+    "video_id": "016",
+    "youtube_id": "5_fXicEnKKk",
+    "url": "https://www.youtube.com/watch?v=5_fXicEnKKk",
+    "question": "When was the painting mentioned in the video painted?",
+    "options": [
+      "A. 1998.",
+      "B. 1889.",
+      "C. 1899.",
+      "D. 1988."
+    ],
+    "answer": "B",
+    "task_type": "Attribute Perception",
+    "question_id": "016-1",
+    "duration": "short"
+  },
+  {
+    "video_id": "016",
+    "youtube_id": "5_fXicEnKKk",
+    "url": "https://www.youtube.com/watch?v=5_fXicEnKKk",
+    "question": "Which of the following elements does not appear in the paintings primarily mentioned in the video?",
+    "options": [
+      "A. Van Gogh' tragic life.",
+      "B. The Van Gogh's artistic attainments.",
+      "C. The value of the painting.",
+      "D. The hope that led Van Gogh into success."
+    ],
+    "answer": "A",
+    "task_type": "Object Reasoning",
+    "question_id": "016-2",
+    "duration": "short"
+  },
+  {
+    "video_id": "016",
+    "youtube_id": "5_fXicEnKKk",
+    "url": "https://www.youtube.com/watch?v=5_fXicEnKKk",
+    "question": "Which of the following elements is not present in the \"Starry Sky\"?",
+    "options": [
+      "A. Houses.",
+      "B. Stars.",
+      "C. Castle.",
+      "D. Moon."
+    ],
+    "answer": "D",
+    "task_type": "Object Reasoning",
+    "question_id": "016-3",
+    "duration": "short"
+  },
+  {
+    "video_id": "048",
+    "youtube_id": "M7WOXFvwbSY",
+    "url": "https://www.youtube.com/watch?v=M7WOXFvwbSY",
+    "question": "Which galaxies are depicted in the video?",
+    "options": [
+      "A. The Sombrero Galaxy and the Triangulum Galaxy.",
+      "B. The Milky Way and the Whirlpool Galaxy.",
+      "C. The Triangulum Galaxy and the Whirlpool Galaxy.",
+      "D. The Andromeda Galaxy and the Milky Way."
+    ],
+    "answer": "D",
+    "task_type": "Object Recognition",
+    "question_id": "048-1",
+    "duration": "short"
+  },
+  {
+    "video_id": "048",
+    "youtube_id": "M7WOXFvwbSY",
+    "url": "https://www.youtube.com/watch?v=M7WOXFvwbSY",
+    "question": "What significant event is the number at the bottom of the video referring to?",
+    "options": [
+      "A. The time until the Andromeda and Milky Way galaxies collide.",
+      "B. The number of stars in the Milky Way.",
+      "C. The age of the universe.",
+      "D. The time remaining before the Sun burns out."
+    ],
+    "answer": "A",
+    "task_type": "Object Reasoning",
+    "question_id": "048-2",
+    "duration": "short"
+  },
+  {
+    "video_id": "048",
+    "youtube_id": "M7WOXFvwbSY",
+    "url": "https://www.youtube.com/watch?v=M7WOXFvwbSY",
+    "question": "Which of the following statements can be inferred about the Triangulum Galaxy (M33) based on the information presented in the video about the other two galaxies?",
+    "options": [
+      "A. It interacts gravitationally with the Andromeda Galaxy (M31).",
+      "B. It may be a companion galaxy to the Andromeda Galaxy, influenced by its gravity.",
+      "C. It is a satellite galaxy of the Andromeda Galaxy.",
+      "D. It is involved in the collision between the Milky Way and Andromeda."
+    ],
+    "answer": "C",
+    "task_type": "Object Reasoning",
+    "question_id": "048-3",
+    "duration": "short"
+  },
+  {
+    "video_id": "112",
+    "youtube_id": "MPfuSfiZ96A",
+    "url": "https://www.youtube.com/watch?v=MPfuSfiZ96A",
+    "question": "How many birds can be observed perched on the street lamp in the first half of the video?",
+    "options": [
+      "A. 6.",
+      "B. 5.",
+      "C. 7.",
+      "D. 8."
+    ],
+    "answer": "B",
+    "task_type": "Counting Problem",
+    "question_id": "112-1",
+    "duration": "short"
+  },
+  {
+    "video_id": "112",
+    "youtube_id": "MPfuSfiZ96A",
+    "url": "https://www.youtube.com/watch?v=MPfuSfiZ96A",
+    "question": "What do the people in the village show in the video used to illuminate the night?",
+    "options": [
+      "A. Flashlights.",
+      "B. Glow sticks.",
+      "C. Homemade lamps.",
+      "D. Electric lights."
+    ],
+    "answer": "C",
+    "task_type": "Information Synopsis",
+    "question_id": "112-2",
+    "duration": "short"
+  },
+  {
+    "video_id": "112",
+    "youtube_id": "MPfuSfiZ96A",
+    "url": "https://www.youtube.com/watch?v=MPfuSfiZ96A",
+    "question": "What is the purpose of collecting sap from a rubber tree in the video?",
+    "options": [
+      "A. To use as cooking ingredients.",
+      "B. For medicinal purposes.",
+      "C. As decoration.",
+      "D. To use as fuel for self-made lamps."
+    ],
+    "answer": "D",
+    "task_type": "Action Reasoning",
+    "question_id": "112-3",
+    "duration": "short"
+  },
+  {
+    "video_id": "120",
+    "youtube_id": "s50vvwTystA",
+    "url": "https://www.youtube.com/watch?v=s50vvwTystA",
+    "question": "What is the animal in the video?",
+    "options": [
+      "A. A cow.",
+      "B. A lamp.",
+      "C. A cat.",
+      "D. A dog."
+    ],
+    "answer": "B",
+    "task_type": "Attribute Perception",
+    "question_id": "120-1",
+    "duration": "short"
+  },
+  {
+    "video_id": "120",
+    "youtube_id": "s50vvwTystA",
+    "url": "https://www.youtube.com/watch?v=s50vvwTystA",
+    "question": "What is the reason for the lamp's action in the video, slapping the human portrayed?",
+    "options": [
+      "A. It is experiencing hunger.",
+      "B. It is expressing anger.",
+      "C. It is unwell.",
+      "D. It desires more physical contact."
+    ],
+    "answer": "D",
+    "task_type": "Action Reasoning",
+    "question_id": "120-2",
+    "duration": "short"
+  },
+  {
+    "video_id": "120",
+    "youtube_id": "s50vvwTystA",
+    "url": "https://www.youtube.com/watch?v=s50vvwTystA",
+    "question": "Which color of clothing is the person wearing in the video?",
+    "options": [
+      "A. White.",
+      "B. Red.",
+      "C. Green.",
+      "D. Blue."
+    ],
+    "answer": "B",
+    "task_type": "Attribute Perception",
+    "question_id": "120-3",
+    "duration": "short"
+  },
+  {
+    "video_id": "259",
+    "youtube_id": "RU8IfXp7LbE",
+    "url": "https://www.youtube.com/watch?v=RU8IfXp7LbE",
+    "question": "What time does the man in the video get up?",
+    "options": [
+      "A. 5:59 a.m.",
+      "B. 6:00 a.m.",
+      "C. 6:00 p.m.",
+      "D. 5:59 p.m."
+    ],
+    "answer": "B",
+    "task_type": "OCR Problems",
+    "question_id": "259-1",
+    "duration": "short"
+  },
+  {
+    "video_id": "259",
+    "youtube_id": "RU8IfXp7LbE",
+    "url": "https://www.youtube.com/watch?v=RU8IfXp7LbE",
+    "question": "Which activity is not shown in the video?",
+    "options": [
+      "A. Using the bathroom.",
+      "B. Swimming.",
+      "C. Taking a shower.",
+      "D. Brushing teeth."
+    ],
+    "answer": "C",
+    "task_type": "Action Recognition",
+    "question_id": "259-2",
+    "duration": "short"
+  },
+  {
+    "video_id": "259",
+    "youtube_id": "RU8IfXp7LbE",
+    "url": "https://www.youtube.com/watch?v=RU8IfXp7LbE",
+    "question": "What does the man shown in the video do after swimming?",
+    "options": [
+      "A. He refuels the car.",
+      "B. He performs a show for children.",
+      "C. He falls asleep.",
+      "D. He takes a shower."
+    ],
+    "answer": "A",
+    "task_type": "Action Recognition",
+    "question_id": "259-3",
+    "duration": "short"
+  },
+  {
+    "video_id": "014",
+    "youtube_id": "uqILuTcux_o",
+    "url": "https://www.youtube.com/watch?v=uqILuTcux_o",
+    "question": "Which of the following can be identified as Susan White-Oakes' most recent art piece, based on the video?",
+    "options": [
+      "A. A tiger.",
+      "B. A bird.",
+      "C. A fish.",
+      "D. A pangolin."
+    ],
+    "answer": "D",
+    "task_type": "Object Recognition",
+    "question_id": "014-1",
+    "duration": "short"
+  },
+  {
+    "video_id": "014",
+    "youtube_id": "uqILuTcux_o",
+    "url": "https://www.youtube.com/watch?v=uqILuTcux_o",
+    "question": "Based on the video, what is Susan White-Oakes' latest art work made of?",
+    "options": [
+      "A. Silver.",
+      "B. Iron.",
+      "C. Bronze.",
+      "D. Copper."
+    ],
+    "answer": "D",
+    "task_type": "Attribute Perception",
+    "question_id": "014-2",
+    "duration": "short"
+  },
+  {
+    "video_id": "014",
+    "youtube_id": "uqILuTcux_o",
+    "url": "https://www.youtube.com/watch?v=uqILuTcux_o",
+    "question": "What does Susan White-Oakes often do before polishing the whole body?",
+    "options": [
+      "A. She sculptures the legs.",
+      "B. She attaches the copper scales to the body.",
+      "C. She decides what size the head should be.",
+      "D. She shapes the claws."
+    ],
+    "answer": "C",
+    "task_type": "Temporal Reasoning",
+    "question_id": "014-3",
+    "duration": "short"
+  },
+  {
+    "video_id": "288",
+    "youtube_id": "j7vUGiA-uIE",
+    "url": "https://www.youtube.com/watch?v=j7vUGiA-uIE",
+    "question": "What were the movements of the individuals in the video during the competition process?",
+    "options": [
+      "A. Lie flat.",
+      "B. Half squat.",
+      "C. Plank.",
+      "D. Stand."
+    ],
+    "answer": "C",
+    "task_type": "Action Recognition",
+    "question_id": "288-1",
+    "duration": "short"
+  },
+  {
+    "video_id": "288",
+    "youtube_id": "j7vUGiA-uIE",
+    "url": "https://www.youtube.com/watch?v=j7vUGiA-uIE",
+    "question": "Where does the participant need to place his/her hand during the game in the video?",
+    "options": [
+      "A. Inside the circle.",
+      "B. Outside the circle.",
+      "C. On the edge of the circle.",
+      "D. Not mentioned."
+    ],
+    "answer": "A",
+    "task_type": "Spatial Perception",
+    "question_id": "288-2",
+    "duration": "short"
+  },
+  {
+    "video_id": "288",
+    "youtube_id": "j7vUGiA-uIE",
+    "url": "https://www.youtube.com/watch?v=j7vUGiA-uIE",
+    "question": "Who is the last to reach the finish line at the end of the video?",
+    "options": [
+      "A. The man in red tops and blue shorts.",
+      "B. The woman wearing a black top and black shorts.",
+      "C. The man in black tops and blue shorts.",
+      "D. The woman in pink blouse and black trousers."
+    ],
+    "answer": "D",
+    "task_type": "Object Recognition",
+    "question_id": "288-3",
+    "duration": "short"
+  },
+  {
+    "video_id": "215",
+    "youtube_id": "VmNBt1tzC6k",
+    "url": "https://www.youtube.com/watch?v=VmNBt1tzC6k",
+    "question": "What is this video mainly about?",
+    "options": [
+      "A. This video is mainly about a gymnastics team showcasing their skills in a high-flying trapeze performance.",
+      "B. This video is mainly about several gymnastics teams participating an acrobatic competition.",
+      "C. This video is mainly about a gymnastics team training for an upcoming synchronized swimming competition.",
+      "D. This video is mainly about a group of gymnasts attempting to break the world record for the longest handstand."
+    ],
+    "answer": "B",
+    "task_type": "Information Synopsis",
+    "question_id": "215-1",
+    "duration": "short"
+  },
+  {
+    "video_id": "215",
+    "youtube_id": "VmNBt1tzC6k",
+    "url": "https://www.youtube.com/watch?v=VmNBt1tzC6k",
+    "question": "What is the ending pose of the team at the end of this video?",
+    "options": [
+      "A. The ending pose of the team is a human pyramid with five people stacked on top of each other.",
+      "B. The ending pose of the team is a synchronized backflip performed simultaneously by all members.",
+      "C. The ending pose of the team resembles a blossoming flower, with one person positioned in the center and two others on either side.",
+      "D. The ending pose of the team is a handstand pyramid with all members balancing on their hands."
+    ],
+    "answer": "C",
+    "task_type": "Action Recognition",
+    "question_id": "215-2",
+    "duration": "short"
+  },
+  {
+    "video_id": "215",
+    "youtube_id": "VmNBt1tzC6k",
+    "url": "https://www.youtube.com/watch?v=VmNBt1tzC6k",
+    "question": "How many individuals are in the team, with each person dressed in yellow?",
+    "options": [
+      "A. 4.",
+      "B. 3.",
+      "C. 5.",
+      "D. 6."
+    ],
+    "answer": "A",
+    "task_type": "Counting Problem",
+    "question_id": "215-3",
+    "duration": "short"
+  },
+  {
+    "video_id": "413",
+    "youtube_id": "tXb_zrHp4H8",
+    "url": "https://www.youtube.com/watch?v=tXb_zrHp4H8",
+    "question": "What is \"Avenues for Justice\" mentioned in the video?",
+    "options": [
+      "A. A travel agency.",
+      "B. A prison.",
+      "C. A detective agency.",
+      "D. A law firm."
+    ],
+    "answer": "D",
+    "task_type": "Attribute Perception",
+    "question_id": "413-1",
+    "duration": "medium"
+  },
+  {
+    "video_id": "413",
+    "youtube_id": "tXb_zrHp4H8",
+    "url": "https://www.youtube.com/watch?v=tXb_zrHp4H8",
+    "question": "What is this video about?",
+    "options": [
+      "A. The development of New York.",
+      "B. The life of a family in New York.",
+      "C. A charitable organization in New York.",
+      "D. Young and homeless in New York."
+    ],
+    "answer": "D",
+    "task_type": "Information Synopsis",
+    "question_id": "413-2",
+    "duration": "medium"
+  },
+  {
+    "video_id": "413",
+    "youtube_id": "tXb_zrHp4H8",
+    "url": "https://www.youtube.com/watch?v=tXb_zrHp4H8",
+    "question": "In which part of the video is the woman in the blue top interviewed?",
+    "options": [
+      "A. Cannot be determined.",
+      "B. The beginning of the video.",
+      "C. The middle part of the video.",
+      "D. The latter part of the video."
+    ],
+    "answer": "D",
+    "task_type": "Temporal Perception",
+    "question_id": "413-3",
+    "duration": "medium"
+  },
+  {
+    "video_id": "530",
+    "youtube_id": "k7iaAhz2md0",
+    "url": "https://www.youtube.com/watch?v=k7iaAhz2md0",
+    "question": "Which of the following materials is not used in this video?",
+    "options": [
+      "A. Old CD's.",
+      "B. Glue or liquid silicone.",
+      "C. Satin Ribbon.",
+      "D. Wool threads."
+    ],
+    "answer": "D",
+    "task_type": "Object Recognition",
+    "question_id": "530-1",
+    "duration": "medium"
+  },
+  {
+    "video_id": "530",
+    "youtube_id": "k7iaAhz2md0",
+    "url": "https://www.youtube.com/watch?v=k7iaAhz2md0",
+    "question": "How many stars can be extracted from one CD?",
+    "options": [
+      "A. 2.",
+      "B. 3.",
+      "C. 4.",
+      "D. 5."
+    ],
+    "answer": "B",
+    "task_type": "Counting Problem",
+    "question_id": "530-2",
+    "duration": "medium"
+  },
+  {
+    "video_id": "530",
+    "youtube_id": "k7iaAhz2md0",
+    "url": "https://www.youtube.com/watch?v=k7iaAhz2md0",
+    "question": "What is this video mainly about?",
+    "options": [
+      "A. It demonstrates how to clean old CDs.",
+      "B. It shows how to extract audio from old CDs.",
+      "C. It teaches how to make beautiful decorations from old CDs.",
+      "D. It compares several different kinds of CDs."
+    ],
+    "answer": "C",
+    "task_type": "Information Synopsis",
+    "question_id": "530-3",
+    "duration": "medium"
+  },
+  {
+    "video_id": "443",
+    "youtube_id": "cPlpZdGLa5A",
+    "url": "https://www.youtube.com/watch?v=cPlpZdGLa5A",
+    "question": "How many attempts do it take for Phonzy to hit a 3-pointer in the first game?",
+    "options": [
+      "A. 2.",
+      "B. 4.",
+      "C. 3.",
+      "D. 5."
+    ],
+    "answer": "D",
+    "task_type": "Counting Problem",
+    "question_id": "443-1",
+    "duration": "medium"
+  },
+  {
+    "video_id": "443",
+    "youtube_id": "cPlpZdGLa5A",
+    "url": "https://www.youtube.com/watch?v=cPlpZdGLa5A",
+    "question": "How many free throws does Jamal hit in game 2?",
+    "options": [
+      "A. 7.",
+      "B. 8.",
+      "C. 10.",
+      "D. 9."
+    ],
+    "answer": "D",
+    "task_type": "Counting Problem",
+    "question_id": "443-2",
+    "duration": "medium"
+  },
+  {
+    "video_id": "443",
+    "youtube_id": "cPlpZdGLa5A",
+    "url": "https://www.youtube.com/watch?v=cPlpZdGLa5A",
+    "question": "Why is there no winner in Game 3?",
+    "options": [
+      "A. Neither of them completed their assigned basketball moves.",
+      "B. They all complete their assigned basketball moves.",
+      "C. Game 3 isn't decisive.",
+      "D. Game 3 is poorly designed."
+    ],
+    "answer": "B",
+    "task_type": "Action Reasoning",
+    "question_id": "443-3",
+    "duration": "medium"
+  },
+  {
+    "video_id": "304",
+    "youtube_id": "QTA8j5wSTx4",
+    "url": "https://www.youtube.com/watch?v=QTA8j5wSTx4",
+    "question": "Why did the main character in the video put his hand in the coat?",
+    "options": [
+      "A. Because his hand was deformed.",
+      "B. For public image.",
+      "C. Because such action can released stomach pain.",
+      "D. For warmth."
+    ],
+    "answer": "B",
+    "task_type": "Action Reasoning",
+    "question_id": "304-1",
+    "duration": "medium"
+  },
+  {
+    "video_id": "304",
+    "youtube_id": "QTA8j5wSTx4",
+    "url": "https://www.youtube.com/watch?v=QTA8j5wSTx4",
+    "question": "Who started the custom of restraining hand activities in pulic?",
+    "options": [
+      "A. Demosthenes.",
+      "B. Aeschines.",
+      "C. Napoleon.",
+      "D. Pizarro."
+    ],
+    "answer": "B",
+    "task_type": "Object Reasoning",
+    "question_id": "304-2",
+    "duration": "medium"
+  },
+  {
+    "video_id": "304",
+    "youtube_id": "QTA8j5wSTx4",
+    "url": "https://www.youtube.com/watch?v=QTA8j5wSTx4",
+    "question": "Which of the following elements isn't mentioned in the painting \"The Emperor Napoleon in His Study at the Tuileries\"?",
+    "options": [
+      "A. A lamp on the desk.",
+      "B. A map on the floor.",
+      "C. A clock on the wall.",
+      "D. Napoleon Bonaparte with his hand tucked inside his coat."
+    ],
+    "answer": "A",
+    "task_type": "Spatial Perception",
+    "question_id": "304-3",
+    "duration": "medium"
+  },
+  {
+    "video_id": "382",
+    "youtube_id": "6DAFkaGUiT4",
+    "url": "https://www.youtube.com/watch?v=6DAFkaGUiT4",
+    "question": "According to the video, why is IMAX not suitable for filming movies?",
+    "options": [
+      "A. The motors make too much noise and distracte the actors.",
+      "B. The cameras are so heavy, and require specific training to operate them.",
+      "C. IMAX movies are expensive to produce.",
+      "D. All of the above."
+    ],
+    "answer": "D",
+    "task_type": "Object Reasoning",
+    "question_id": "382-1",
+    "duration": "medium"
+  },
+  {
+    "video_id": "382",
+    "youtube_id": "6DAFkaGUiT4",
+    "url": "https://www.youtube.com/watch?v=6DAFkaGUiT4",
+    "question": "According to the video, which statement is correct?",
+    "options": [
+      "A. IMAX cameras use 35mm film.",
+      "B. 1000 feet of film is enough for an imax camera to shoot for a whole day.",
+      "C. IMAX digital projectors use prisms to split xenon lights to produce different colors of light.",
+      "D. IMAX only has nine film cameras."
+    ],
+    "answer": "D",
+    "task_type": "Information Synopsis",
+    "question_id": "382-2",
+    "duration": "medium"
+  },
+  {
+    "video_id": "382",
+    "youtube_id": "6DAFkaGUiT4",
+    "url": "https://www.youtube.com/watch?v=6DAFkaGUiT4",
+    "question": "Which IMAX movie isn't in the video?",
+    "options": [
+      "A. The Hunger Games: Catching Fire.",
+      "B. The Dark Knight.",
+      "C. Oppenheimer.",
+      "D. Dune."
+    ],
+    "answer": "D",
+    "task_type": "Object Recognition",
+    "question_id": "382-3",
+    "duration": "medium"
+  },
+  {
+    "video_id": "517",
+    "youtube_id": "dy8AvyRlXpQ",
+    "url": "https://www.youtube.com/watch?v=dy8AvyRlXpQ",
+    "question": "How many female performers are doing this show?",
+    "options": [
+      "A. 2.",
+      "B. 3.",
+      "C. 4.",
+      "D. 5."
+    ],
+    "answer": "A",
+    "task_type": "Counting Problem",
+    "question_id": "517-1",
+    "duration": "medium"
+  },
+  {
+    "video_id": "517",
+    "youtube_id": "dy8AvyRlXpQ",
+    "url": "https://www.youtube.com/watch?v=dy8AvyRlXpQ",
+    "question": "What happened after the two actresses climbed onto the high board?",
+    "options": [
+      "A. Two actresses jumped to the swing.",
+      "B. They performed a series of acrobatic flips and twists in mid-air.",
+      "C. They started a choreographed dance routine on the platform.",
+      "D. One of the actresses jumped to the swing."
+    ],
+    "answer": "D",
+    "task_type": "Action Recognition",
+    "question_id": "517-2",
+    "duration": "medium"
+  },
+  {
+    "video_id": "517",
+    "youtube_id": "dy8AvyRlXpQ",
+    "url": "https://www.youtube.com/watch?v=dy8AvyRlXpQ",
+    "question": "What is the function of the actor hanging on the left swing?",
+    "options": [
+      "A. The actor hanging on the left swing is responsible for swinging higher than the performer on the right swing.",
+      "B. The actor hanging on the left swing is there to catch the performer who jumps out of the right swing.",
+      "C. The actor hanging on the left swing is there to distract the audience with his acrobatic tricks.",
+      "D. The actor hanging on the left swing is there to balance the weight distribution of the swings."
+    ],
+    "answer": "B",
+    "task_type": "Object Reasoning",
+    "question_id": "517-3",
+    "duration": "medium"
+  },
+  {
+    "video_id": "475",
+    "youtube_id": "Hw5qjcnhrW4",
+    "url": "https://www.youtube.com/watch?v=Hw5qjcnhrW4",
+    "question": "What sport are the two athletes playing?",
+    "options": [
+      "A. Baseball.",
+      "B. Tennis.",
+      "C. Soccer.",
+      "D. Basketball."
+    ],
+    "answer": "B",
+    "task_type": "Object Recognition",
+    "question_id": "475-1",
+    "duration": "medium"
+  },
+  {
+    "video_id": "475",
+    "youtube_id": "Hw5qjcnhrW4",
+    "url": "https://www.youtube.com/watch?v=Hw5qjcnhrW4",
+    "question": "How many points does the winner get enough to win the match?",
+    "options": [
+      "A. 5.",
+      "B. 7.",
+      "C. 6.",
+      "D. 11."
+    ],
+    "answer": "C",
+    "task_type": "Action Reasoning",
+    "question_id": "475-2",
+    "duration": "medium"
+  },
+  {
+    "video_id": "475",
+    "youtube_id": "Hw5qjcnhrW4",
+    "url": "https://www.youtube.com/watch?v=Hw5qjcnhrW4",
+    "question": "What do the two players have in common?",
+    "options": [
+      "A. Both of them are wearing hats with a tick logo.",
+      "B. Both of them are wearing black shorts.",
+      "C. Both of them are from Spain.",
+      "D. They have the same height."
+    ],
+    "answer": "A",
+    "task_type": "Object Reasoning",
+    "question_id": "475-3",
+    "duration": "medium"
+  },
+  {
+    "video_id": "380",
+    "youtube_id": "2Bns2m5Bg4M",
+    "url": "https://www.youtube.com/watch?v=2Bns2m5Bg4M",
+    "question": "As can be seen in the video, which food is not used to practice holding chopsticks?",
+    "options": [
+      "A. Blueberries.",
+      "B. Popcoin.",
+      "C. Peanuts.",
+      "D. Soybeans."
+    ],
+    "answer": "D",
+    "task_type": "Object Recognition",
+    "question_id": "380-1",
+    "duration": "medium"
+  },
+  {
+    "video_id": "380",
+    "youtube_id": "2Bns2m5Bg4M",
+    "url": "https://www.youtube.com/watch?v=2Bns2m5Bg4M",
+    "question": "As depicted in the video, which finger touches the chopsticks?",
+    "options": [
+      "A. Little finger on the right hand.",
+      "B. Little finger on the left hand.",
+      "C. Index finger on the right hand.",
+      "D. Index finger on the left hand."
+    ],
+    "answer": "C",
+    "task_type": "Object Recognition",
+    "question_id": "380-2",
+    "duration": "medium"
+  },
+  {
+    "video_id": "380",
+    "youtube_id": "2Bns2m5Bg4M",
+    "url": "https://www.youtube.com/watch?v=2Bns2m5Bg4M",
+    "question": "What is this video mainly about?",
+    "options": [
+      "A. It discusses the cultural significance of chopsticks in Western cuisine.",
+      "B. It demonstrates advanced techniques for playing musical instruments using chopsticks.",
+      "C. It gives a quick tutorial on how to use chopsticks.",
+      "D. None of the above."
+    ],
+    "answer": "C",
+    "task_type": "Information Synopsis",
+    "question_id": "380-3",
+    "duration": "medium"
+  },
+  {
+    "video_id": "411",
+    "youtube_id": "K759eXmaMTY",
+    "url": "https://www.youtube.com/watch?v=K759eXmaMTY",
+    "question": "What caused the dilapidated scene at the beginning of the video?",
+    "options": [
+      "A. Typhoon.",
+      "B. War.",
+      "C. Fire.",
+      "D. Earthquake."
+    ],
+    "answer": "D",
+    "task_type": "Attribute Perception",
+    "question_id": "411-1",
+    "duration": "medium"
+  },
+  {
+    "video_id": "411",
+    "youtube_id": "K759eXmaMTY",
+    "url": "https://www.youtube.com/watch?v=K759eXmaMTY",
+    "question": "What are the children wearing pink outfits doing at the beginning of the video?",
+    "options": [
+      "A. Praying.",
+      "B. Having a party.",
+      "C. Learning ballet.",
+      "D. Receiving treatment."
+    ],
+    "answer": "C",
+    "task_type": "Action Recognition",
+    "question_id": "411-2",
+    "duration": "medium"
+  },
+  {
+    "video_id": "411",
+    "youtube_id": "K759eXmaMTY",
+    "url": "https://www.youtube.com/watch?v=K759eXmaMTY",
+    "question": "In the middle of the video, what are the difficulties of rebuilding after the earthquake?",
+    "options": [
+      "A. The weather and the unstable economy.",
+      "B. Serious casualties.",
+      "C. Constant aftershocks.",
+      "D. There are not enough supplies."
+    ],
+    "answer": "A",
+    "task_type": "Information Synopsis",
+    "question_id": "411-3",
+    "duration": "medium"
+  },
+  {
+    "video_id": "473",
+    "youtube_id": "G-mmtUxSt5k",
+    "url": "https://www.youtube.com/watch?v=G-mmtUxSt5k",
+    "question": "How many men's single matches are included in this video?",
+    "options": [
+      "A. 10.",
+      "B. 9.",
+      "C. 8.",
+      "D. 7."
+    ],
+    "answer": "D",
+    "task_type": "Counting Problem",
+    "question_id": "473-1",
+    "duration": "medium"
+  },
+  {
+    "video_id": "473",
+    "youtube_id": "G-mmtUxSt5k",
+    "url": "https://www.youtube.com/watch?v=G-mmtUxSt5k",
+    "question": "Where is the first match held?",
+    "options": [
+      "A. SINGAPORE.",
+      "B. SUZHOU.",
+      "C. Sudirman.",
+      "D. HANGZHOU."
+    ],
+    "answer": "B",
+    "task_type": "Spatial Perception",
+    "question_id": "473-2",
+    "duration": "medium"
+  },
+  {
+    "video_id": "473",
+    "youtube_id": "G-mmtUxSt5k",
+    "url": "https://www.youtube.com/watch?v=G-mmtUxSt5k",
+    "question": "Which team won the first men's doubles?",
+    "options": [
+      "A. The red team.",
+      "B. The orange team.",
+      "C. The blue team.",
+      "D. None of the above."
+    ],
+    "answer": "C",
+    "task_type": "Object Reasoning",
+    "question_id": "473-3",
+    "duration": "medium"
+  },
+  {
+    "video_id": "353",
+    "youtube_id": "wdcXmerZWDc",
+    "url": "https://www.youtube.com/watch?v=wdcXmerZWDc",
+    "question": "What's the weather like in the city at the beginning of the video?",
+    "options": [
+      "A. Stormy.",
+      "B. Rainy.",
+      "C. Cloudy.",
+      "D. Sunny."
+    ],
+    "answer": "D",
+    "task_type": "Attribute Perception",
+    "question_id": "353-1",
+    "duration": "medium"
+  },
+  {
+    "video_id": "353",
+    "youtube_id": "wdcXmerZWDc",
+    "url": "https://www.youtube.com/watch?v=wdcXmerZWDc",
+    "question": "What is the color of the clothes that the speaker is wearing in the video?",
+    "options": [
+      "A. Navy blue.",
+      "B. Pink.",
+      "C. Green.",
+      "D. Brown."
+    ],
+    "answer": "A",
+    "task_type": "Attribute Perception",
+    "question_id": "353-2",
+    "duration": "medium"
+  },
+  {
+    "video_id": "353",
+    "youtube_id": "wdcXmerZWDc",
+    "url": "https://www.youtube.com/watch?v=wdcXmerZWDc",
+    "question": "What does the speaker explain before introducing MS4?",
+    "options": [
+      "A. The government has token several measures to handle storm water.",
+      "B. Developers are increasingly tasked with managing runoff from their projects.",
+      "C. It will be a difficult task for water treatment plants to deal with the storm water alone.",
+      "D. It's impossible to handle the storm water."
+    ],
+    "answer": "C",
+    "task_type": "Object Reasoning",
+    "question_id": "353-3",
+    "duration": "medium"
+  },
+  {
+    "video_id": "348",
+    "youtube_id": "HLxvq_M4218",
+    "url": "https://www.youtube.com/watch?v=HLxvq_M4218",
+    "question": "Which specific phenomenon during the video demonstrated the correctness of general relativity?",
+    "options": [
+      "A. The existence of gravitational waves.",
+      "B. Light bends when it passes through the gravitational field of the sun.",
+      "C. The gravitational redshift phenomenon.",
+      "D. The existence of black holes."
+    ],
+    "answer": "B",
+    "task_type": "Object Reasoning",
+    "question_id": "348-1",
+    "duration": "medium"
+  },
+  {
+    "video_id": "348",
+    "youtube_id": "HLxvq_M4218",
+    "url": "https://www.youtube.com/watch?v=HLxvq_M4218",
+    "question": "What is the video about?",
+    "options": [
+      "A. The 1919 total solar eclipse that verified Einstein's theory of relativity.",
+      "B. Einstein's initial proposal of the theory that light bends under the influence of the sun's gravity.",
+      "C. Einstein's presentation of the complete theory of general relativity at the Prussian Academy of Sciences.",
+      "D. Einstein's first public presentation of the equations of general relativity in 1915."
+    ],
+    "answer": "A",
+    "task_type": "Information Synopsis",
+    "question_id": "348-2",
+    "duration": "medium"
+  },
+  {
+    "video_id": "348",
+    "youtube_id": "HLxvq_M4218",
+    "url": "https://www.youtube.com/watch?v=HLxvq_M4218",
+    "question": "At least how many total solar eclipses occurred between 1921 and 1970 according to the video?",
+    "options": [
+      "A. 7 total solar eclipses.",
+      "B. 6 total solar eclipses.",
+      "C. 5 total solar eclipses.",
+      "D. 4 total solar eclipses."
+    ],
+    "answer": "D",
+    "task_type": "Counting Problem",
+    "question_id": "348-3",
+    "duration": "medium"
+  },
+  {
+    "video_id": "495",
+    "youtube_id": "WNYi8LUGIZc",
+    "url": "https://www.youtube.com/watch?v=WNYi8LUGIZc",
+    "question": "What type of cards does the magician ask the female judge to pick one from?",
+    "options": [
+      "A. Drinks.",
+      "B. Celebrities.",
+      "C. Animals.",
+      "D. Transportations."
+    ],
+    "answer": "B",
+    "task_type": "Attribute Perception",
+    "question_id": "495-1",
+    "duration": "medium"
+  },
+  {
+    "video_id": "495",
+    "youtube_id": "WNYi8LUGIZc",
+    "url": "https://www.youtube.com/watch?v=WNYi8LUGIZc",
+    "question": "What magic does the magician first perform on the stage?",
+    "options": [
+      "A. He cuts paper to make the drink the female judge is thinking.",
+      "B. He cuts paper to make the avatar of the celebrity the male judge is thinking of.",
+      "C. He cuts paper to make the avatar of the celebrity the female judge is thinking of.",
+      "D. He cuts paper to make the drink the male judge is thinking."
+    ],
+    "answer": "C",
+    "task_type": "Action Recognition",
+    "question_id": "495-2",
+    "duration": "medium"
+  },
+  {
+    "video_id": "495",
+    "youtube_id": "WNYi8LUGIZc",
+    "url": "https://www.youtube.com/watch?v=WNYi8LUGIZc",
+    "question": "What do the two performances have in common?",
+    "options": [
+      "A. They both need interactions with judges.",
+      "B. The magicians in the two performances both wear a tie.",
+      "C. They both need playing cards as performance props.",
+      "D. They both have purple stage backgrounds."
+    ],
+    "answer": "A",
+    "task_type": "Object Reasoning",
+    "question_id": "495-3",
+    "duration": "medium"
+  },
+  {
+    "video_id": "350",
+    "youtube_id": "e-P5IFTqB98",
+    "url": "https://www.youtube.com/watch?v=e-P5IFTqB98",
+    "question": "What is the primary topic of the video?",
+    "options": [
+      "A. The history of telescopes.",
+      "B. The lifecycle of stars.",
+      "C. The formation and evolution of black holes.",
+      "D. The dangers of space travel."
+    ],
+    "answer": "C",
+    "task_type": "Information Synopsis",
+    "question_id": "350-1",
+    "duration": "medium"
+  },
+  {
+    "video_id": "350",
+    "youtube_id": "e-P5IFTqB98",
+    "url": "https://www.youtube.com/watch?v=e-P5IFTqB98",
+    "question": "How does the diameter of the black hole S5 0014+81 compare to other distances in space?",
+    "options": [
+      "A. It is roughly equal to the size of the Milky Way.",
+      "B. It is smaller than the distance from the Sun to Pluto.",
+      "C. It is about the same as the distance from Earth to the Sun.",
+      "D. The history of telescopes."
+    ],
+    "answer": "D",
+    "task_type": "Object Reasoning",
+    "question_id": "350-2",
+    "duration": "medium"
+  },
+  {
+    "video_id": "350",
+    "youtube_id": "e-P5IFTqB98",
+    "url": "https://www.youtube.com/watch?v=e-P5IFTqB98",
+    "question": "What indicates if we travel inside a black hole for quite a while?",
+    "options": [
+      "A. The black hole has a super size massive.",
+      "B. The black hole is rotating rapidly.",
+      "C. The black hole is emitting visible light.",
+      "D. The black hole has a charged event horizon."
+    ],
+    "answer": "A",
+    "task_type": "Object Reasoning",
+    "question_id": "350-3",
+    "duration": "medium"
+  },
+  {
+    "video_id": "484",
+    "youtube_id": "PSyedQl9IiQ",
+    "url": "https://www.youtube.com/watch?v=PSyedQl9IiQ",
+    "question": "What is the theme of the performance in the video?",
+    "options": [
+      "A. The joys of childhood.",
+      "B. The importance of education.",
+      "C. Rebellion against authority.",
+      "D. The history of literature."
+    ],
+    "answer": "C",
+    "task_type": "Spatial Reasoning",
+    "question_id": "484-1",
+    "duration": "medium"
+  },
+  {
+    "video_id": "484",
+    "youtube_id": "PSyedQl9IiQ",
+    "url": "https://www.youtube.com/watch?v=PSyedQl9IiQ",
+    "question": "How many seats are on stage in the video?",
+    "options": [
+      "A. Nine.",
+      "B. Three.",
+      "C. Six.",
+      "D. Five."
+    ],
+    "answer": "A",
+    "task_type": "Counting Problem",
+    "question_id": "484-2",
+    "duration": "medium"
+  },
+  {
+    "video_id": "484",
+    "youtube_id": "PSyedQl9IiQ",
+    "url": "https://www.youtube.com/watch?v=PSyedQl9IiQ",
+    "question": "What can be inferred about the story at the beginning of the video?",
+    "options": [
+      "A. Students are engaged in a group reading session.",
+      "B. Students are preparing for an exam.",
+      "C. Students are in the midst of a classroom lesson.",
+      "D. Students are facing off against a figure of authority."
+    ],
+    "answer": "D",
+    "task_type": "Temporal Perception",
+    "question_id": "484-3",
+    "duration": "medium"
+  },
+  {
+    "video_id": "477",
+    "youtube_id": "c66RN87YjNE",
+    "url": "https://www.youtube.com/watch?v=c66RN87YjNE",
+    "question": "Which team participates in the first five matches in this video?",
+    "options": [
+      "A. JPN.",
+      "B. GER.",
+      "C. CAN.",
+      "D. IRI."
+    ],
+    "answer": "A",
+    "task_type": "Object Recognition",
+    "question_id": "477-1",
+    "duration": "medium"
+  },
+  {
+    "video_id": "477",
+    "youtube_id": "c66RN87YjNE",
+    "url": "https://www.youtube.com/watch?v=c66RN87YjNE",
+    "question": "What is the number written on the back of Nishida?",
+    "options": [
+      "A. 13.",
+      "B. 22.",
+      "C. 20.",
+      "D. 11."
+    ],
+    "answer": "D",
+    "task_type": "OCR Problems",
+    "question_id": "477-2",
+    "duration": "medium"
+  },
+  {
+    "video_id": "477",
+    "youtube_id": "c66RN87YjNE",
+    "url": "https://www.youtube.com/watch?v=c66RN87YjNE",
+    "question": "How does JPN team usually win a point in this video?",
+    "options": [
+      "A. By drive serve.",
+      "B. By quick smash.",
+      "C. By dink spike.",
+      "D. By switch attack."
+    ],
+    "answer": "B",
+    "task_type": "Action Recognition",
+    "question_id": "477-3",
+    "duration": "medium"
+  },
+  {
+    "video_id": "436",
+    "youtube_id": "erjwCQ-UZyw",
+    "url": "https://www.youtube.com/watch?v=erjwCQ-UZyw",
+    "question": "What can be seen in the sky during the race?",
+    "options": [
+      "A. Stars.",
+      "B. Birds.",
+      "C. Planes.",
+      "D. Rockets."
+    ],
+    "answer": "C",
+    "task_type": "Object Recognition",
+    "question_id": "436-1",
+    "duration": "medium"
+  },
+  {
+    "video_id": "436",
+    "youtube_id": "erjwCQ-UZyw",
+    "url": "https://www.youtube.com/watch?v=erjwCQ-UZyw",
+    "question": "How many cars does player use?",
+    "options": [
+      "A. 1.",
+      "B. 3.",
+      "C. 4.",
+      "D. 2."
+    ],
+    "answer": "D",
+    "task_type": "Counting Problem",
+    "question_id": "436-2",
+    "duration": "medium"
+  },
+  {
+    "video_id": "436",
+    "youtube_id": "erjwCQ-UZyw",
+    "url": "https://www.youtube.com/watch?v=erjwCQ-UZyw",
+    "question": "What is the weather like?",
+    "options": [
+      "A. Rainy.",
+      "B. Sunny.",
+      "C. Snow.",
+      "D. Gloomy."
+    ],
+    "answer": "B",
+    "task_type": "Spatial Perception",
+    "question_id": "436-3",
+    "duration": "medium"
+  },
+  {
+    "video_id": "323",
+    "youtube_id": "URUJD5NEXC8",
+    "url": "https://www.youtube.com/watch?v=URUJD5NEXC8",
+    "question": "Which cellular structure is responsible for receiving proteins according to the video?",
+    "options": [
+      "A. Golgi apparatus (Golgi body).",
+      "B. Nucleus.",
+      "C. Ribosome.",
+      "D. Mitochondrion."
+    ],
+    "answer": "A",
+    "task_type": "Object Recognition",
+    "question_id": "323-1",
+    "duration": "medium"
+  },
+  {
+    "video_id": "323",
+    "youtube_id": "URUJD5NEXC8",
+    "url": "https://www.youtube.com/watch?v=URUJD5NEXC8",
+    "question": "Which components are part of the object described in the video?",
+    "options": [
+      "A. Ribosomes and Endoplasmic Reticulum.",
+      "B. Microfilaments and Microtubules.",
+      "C. Golgi Apparatus and Lysosomes.",
+      "D. Nucleolus and Peroxisomes."
+    ],
+    "answer": "B",
+    "task_type": "Attribute Perception",
+    "question_id": "323-2",
+    "duration": "medium"
+  },
+  {
+    "video_id": "323",
+    "youtube_id": "URUJD5NEXC8",
+    "url": "https://www.youtube.com/watch?v=URUJD5NEXC8",
+    "question": "What is the correct chronological order in which the following parts of the video appear?\n(a) Human lungs.\n(b) Protein folding distortion.\n(c) Mice, plants and cells.",
+    "options": [
+      "A. (a)(b)(c).",
+      "B. (c)(a)(b).",
+      "C. (c)(b)(a).",
+      "D. (b)(c)(a)."
+    ],
+    "answer": "C",
+    "task_type": "Temporal Reasoning",
+    "question_id": "323-3",
+    "duration": "medium"
+  },
+  {
+    "video_id": "536",
+    "youtube_id": "-c8eATXUui8",
+    "url": "https://www.youtube.com/watch?v=-c8eATXUui8",
+    "question": "What is the first food the main character in the video tried?",
+    "options": [
+      "A. Pizza.",
+      "B. Hot dogs.",
+      "C. Bagles.",
+      "D. Barbecue."
+    ],
+    "answer": "C",
+    "task_type": "Object Recognition",
+    "question_id": "536-1",
+    "duration": "medium"
+  },
+  {
+    "video_id": "536",
+    "youtube_id": "-c8eATXUui8",
+    "url": "https://www.youtube.com/watch?v=-c8eATXUui8",
+    "question": "Of the following foods, what does the protagonist in the video prefer?",
+    "options": [
+      "A. Rice noodle roll.",
+      "B. Bacon sandwich.",
+      "C. Bagles.",
+      "D. Pizza."
+    ],
+    "answer": "B",
+    "task_type": "Action Reasoning",
+    "question_id": "536-2",
+    "duration": "medium"
+  },
+  {
+    "video_id": "536",
+    "youtube_id": "-c8eATXUui8",
+    "url": "https://www.youtube.com/watch?v=-c8eATXUui8",
+    "question": "The ad in the video is inserted while the main character is eating what?",
+    "options": [
+      "A. Pickle.",
+      "B. Taco.",
+      "C. Cookie.",
+      "D. Ice cream."
+    ],
+    "answer": "C",
+    "task_type": "Object Recognition",
+    "question_id": "536-3",
+    "duration": "medium"
+  },
+  {
+    "video_id": "575",
+    "youtube_id": "cFqLEwAvaHI",
+    "url": "https://www.youtube.com/watch?v=cFqLEwAvaHI",
+    "question": "What are the animals featured in the video?",
+    "options": [
+      "A. Pandas.",
+      "B. Dogs.",
+      "C. Cats.",
+      "D. Foxes."
+    ],
+    "answer": "D",
+    "task_type": "Object Recognition",
+    "question_id": "575-1",
+    "duration": "medium"
+  },
+  {
+    "video_id": "575",
+    "youtube_id": "cFqLEwAvaHI",
+    "url": "https://www.youtube.com/watch?v=cFqLEwAvaHI",
+    "question": "What color is the house?",
+    "options": [
+      "A. Blue.",
+      "B. Green.",
+      "C. White.",
+      "D. Red."
+    ],
+    "answer": "D",
+    "task_type": "Action Reasoning",
+    "question_id": "575-2",
+    "duration": "medium"
+  },
+  {
+    "video_id": "575",
+    "youtube_id": "cFqLEwAvaHI",
+    "url": "https://www.youtube.com/watch?v=cFqLEwAvaHI",
+    "question": "What is between the yellow fox and the white fox?",
+    "options": [
+      "A. Fence.",
+      "B. Stone.",
+      "C. Tree.",
+      "D. House."
+    ],
+    "answer": "A",
+    "task_type": "Object Recognition",
+    "question_id": "575-3",
+    "duration": "medium"
+  },
+  {
+    "video_id": "664",
+    "youtube_id": "x1qEBVBxE10",
+    "url": "https://www.youtube.com/watch?v=x1qEBVBxE10",
+    "question": "What is the video mainly about?",
+    "options": [
+      "A. Disputes over custody in divorce cases.",
+      "B. Determining custodial rights between genders.",
+      "C. Establishing paternity of a child.",
+      "D. Addressing allegations of child abuse by men."
+    ],
+    "answer": "C",
+    "task_type": "Information Synopsis",
+    "question_id": "664-1",
+    "duration": "long"
+  },
+  {
+    "video_id": "664",
+    "youtube_id": "x1qEBVBxE10",
+    "url": "https://www.youtube.com/watch?v=x1qEBVBxE10",
+    "question": "Who is the biological father of the girl in the second case in the video?",
+    "options": [
+      "A. Mr. Bryant.",
+      "B. Mr. Jennings.",
+      "C. Not mentioned in the video.",
+      "D. Mr. Hardy."
+    ],
+    "answer": "A",
+    "task_type": "Object Reasoning",
+    "question_id": "664-2",
+    "duration": "long"
+  },
+  {
+    "video_id": "664",
+    "youtube_id": "x1qEBVBxE10",
+    "url": "https://www.youtube.com/watch?v=x1qEBVBxE10",
+    "question": "What is the view held by the female witness present in the first case in the video?",
+    "options": [
+      "A. She testifies that the man is the girl's biological father.",
+      "B. She suspects the boy is not the man's biological child.",
+      "C. She testifies that the man is the boy's biological father.",
+      "D. She suspects the girl is not the man's biological child."
+    ],
+    "answer": "D",
+    "task_type": "Object Reasoning",
+    "question_id": "664-3",
+    "duration": "long"
+  },
+  {
+    "video_id": "794",
+    "youtube_id": "XDq08lk5GnQ",
+    "url": "https://www.youtube.com/watch?v=XDq08lk5GnQ",
+    "question": "What is the primary focus of this video?",
+    "options": [
+      "A. The video features a magician who can control the elements and manipulate fire, water, and wind.",
+      "B. The video highlights a magician who performs several astonishing magics on the stage.",
+      "C. The video features a magician who reveals the secrets behind famous magic tricks.",
+      "D. The video showcases a magician who can transform ordinary objects into gold with his magic."
+    ],
+    "answer": "C",
+    "task_type": "Information Synopsis",
+    "question_id": "794-1",
+    "duration": "long"
+  },
+  {
+    "video_id": "794",
+    "youtube_id": "XDq08lk5GnQ",
+    "url": "https://www.youtube.com/watch?v=XDq08lk5GnQ",
+    "question": "What is the key to the illusion of bending a teaspoon with his mind?",
+    "options": [
+      "A. The key to the illusion is a spring at the center to stretch a special teaspoon.",
+      "B. The key to the illusion is using a hidden magnet to manipulate the teaspoon.",
+      "C. The key to the illusion is a special chemical coating on the teaspoon that reacts to the magician's touch.",
+      "D. The key to the illusion is a miniature robotic arm hidden inside the teaspoon."
+    ],
+    "answer": "A",
+    "task_type": "Action Reasoning",
+    "question_id": "794-2",
+    "duration": "long"
+  },
+  {
+    "video_id": "794",
+    "youtube_id": "XDq08lk5GnQ",
+    "url": "https://www.youtube.com/watch?v=XDq08lk5GnQ",
+    "question": "What is the purpose of the mirrors in the last magic?",
+    "options": [
+      "A. To create an optical illusion that makes it appear as though the magician is in two places at once.",
+      "B. To prevent the audience from seeing the magician's escape route.",
+      "C. To enhance the visual aesthetics of the performance and create a mesmerizing atmosphere for the audience.",
+      "D. To serve as a symbolic representation of the magician's ability to manipulate reality and bend the laws of physics."
+    ],
+    "answer": "B",
+    "task_type": "Object Reasoning",
+    "question_id": "794-3",
+    "duration": "long"
+  },
+  {
+    "video_id": "641",
+    "youtube_id": "rD5oDjk3IOU",
+    "url": "https://www.youtube.com/watch?v=rD5oDjk3IOU",
+    "question": "What future human activity does the video discuss?",
+    "options": [
+      "A. Initiating experimental colonies on habitable exoplanets.",
+      "B. Beginning large-scale terraforming projects on Mars.",
+      "C. Launching commercial expeditions to potentially habitable exoplanets.",
+      "D. The possibility of sending humans to settle on other planets."
+    ],
+    "answer": "A",
+    "task_type": "Object Reasoning",
+    "question_id": "641-1",
+    "duration": "long"
+  },
+  {
+    "video_id": "641",
+    "youtube_id": "rD5oDjk3IOU",
+    "url": "https://www.youtube.com/watch?v=rD5oDjk3IOU",
+    "question": "In what order are the following planets introduced in the video?",
+    "options": [
+      "A. Venus, Jupiter, Neptune.",
+      "B. Mercury, Jupiter, Mars.",
+      "C. Venus, Neptune, Jupiter.",
+      "D. Jupiter, Mercury, Neptune."
+    ],
+    "answer": "A",
+    "task_type": "Temporal Reasoning",
+    "question_id": "641-2",
+    "duration": "long"
+  },
+  {
+    "video_id": "641",
+    "youtube_id": "rD5oDjk3IOU",
+    "url": "https://www.youtube.com/watch?v=rD5oDjk3IOU",
+    "question": "What are the planets that Dr.David Grinspoon and Dr. Heidi B. Hammel research?",
+    "options": [
+      "A. Mars and Jupiter.",
+      "B. Venus and Neptune.",
+      "C. Mars and Neptune.",
+      "D. Jupiter and Neptune."
+    ],
+    "answer": "B",
+    "task_type": "Object Reasoning",
+    "question_id": "641-3",
+    "duration": "long"
+  },
+  {
+    "video_id": "883",
+    "youtube_id": "2LDriAWltwM",
+    "url": "https://www.youtube.com/watch?v=2LDriAWltwM",
+    "question": "Which move in the video was done in both the warm-up phase and the official workout phase of Monday's workout?",
+    "options": [
+      "A. Glute drive.",
+      "B. Barbell rdls.",
+      "C. Single leg dumbbell rdl.",
+      "D. Seated hamstring curl."
+    ],
+    "answer": "A",
+    "task_type": "Action Reasoning",
+    "question_id": "883-1",
+    "duration": "long"
+  },
+  {
+    "video_id": "883",
+    "youtube_id": "2LDriAWltwM",
+    "url": "https://www.youtube.com/watch?v=2LDriAWltwM",
+    "question": "What is the difference in appearance between the female lead in the video, Friday and Wednesday?",
+    "options": [
+      "A. On Friday her hair was shorter compared to when it was on Wednesday, and on Friday she wore different trousers than she did on Wednesday.",
+      "B. Friday she didn't wear a coat, Wednesday she wore a coat.",
+      "C. On Friday, her hair was longer and straighter and she wore different trousers than on Wednesday.",
+      "D. On Friday, her hair turned curly and she wore different trousers than she did on Wednesday."
+    ],
+    "answer": "D",
+    "task_type": "Object Reasoning",
+    "question_id": "883-2",
+    "duration": "long"
+  },
+  {
+    "video_id": "883",
+    "youtube_id": "2LDriAWltwM",
+    "url": "https://www.youtube.com/watch?v=2LDriAWltwM",
+    "question": "Which of the following describes the heroine's weekly fitness programme correctly?",
+    "options": [
+      "A. Glutes and hamstrings on Monday, pulls on Tuesday, Quads and calves on Wednesday, rest on Thursday when the lady goes to the hairdresser's and gets her hair done, push on Friday and Cardio and Core on Saturday.",
+      "B. Glutes and hamstrings on Monday, push on Tuesday, Quads and calves on Wednesday, rest on Thursday when the lady goes to the hairdresser's and gets her hair done, pulls on Friday and Cardio and Core on Saturday.",
+      "C. Glutes and hamstrings on Monday, pulls on Tuesday, Wednesday off while the lady goes to the hairdresser's and gets her hair done, Quads and calves on Thursday, push on Friday and Cardio and Core on Saturday.",
+      "D. None of the above."
+    ],
+    "answer": "B",
+    "task_type": "Temporal Reasoning",
+    "question_id": "883-3",
+    "duration": "long"
+  },
+  {
+    "video_id": "751",
+    "youtube_id": "-yWE13LbFd4",
+    "url": "https://www.youtube.com/watch?v=-yWE13LbFd4",
+    "question": "How many goals did the number 9 of the blue team score in the match?",
+    "options": [
+      "A. 1.",
+      "B. 2.",
+      "C. 3.",
+      "D. 4."
+    ],
+    "answer": "B",
+    "task_type": "Counting Problem",
+    "question_id": "751-1",
+    "duration": "long"
+  },
+  {
+    "video_id": "751",
+    "youtube_id": "-yWE13LbFd4",
+    "url": "https://www.youtube.com/watch?v=-yWE13LbFd4",
+    "question": "How many timeout substitutions were there during the game in the video?",
+    "options": [
+      "A. 1.",
+      "B. 2.",
+      "C. 3.",
+      "D. 4."
+    ],
+    "answer": "B",
+    "task_type": "Counting Problem",
+    "question_id": "751-2",
+    "duration": "long"
+  },
+  {
+    "video_id": "751",
+    "youtube_id": "-yWE13LbFd4",
+    "url": "https://www.youtube.com/watch?v=-yWE13LbFd4",
+    "question": "How did the match in the video progress in terms of scoring, leading up to its conclusion?",
+    "options": [
+      "A. The match was dominated by the blue team throughout, ending in a straightforward win without going to extra time.",
+      "B. The red team took an early lead, but the blue team caught up and maintained a steady lead, winning the match without needing extra time.",
+      "C. The match was closely contested, with the score tied at halftime and again during the second half, ultimately going to extra time where the red team won by penalties.",
+      "D. The game saw an unexpected comeback by the blue team in the extra time, securing a win through a last-minute goal."
+    ],
+    "answer": "C",
+    "task_type": "Object Reasoning",
+    "question_id": "751-3",
+    "duration": "long"
+  },
+  {
+    "video_id": "786",
+    "youtube_id": "P69idA8JO98",
+    "url": "https://www.youtube.com/watch?v=P69idA8JO98",
+    "question": "How does Snow White come to meet the seven miners?",
+    "options": [
+      "A. She is on a quest to find a hidden treasure.",
+      "B. She is kidnapped by the miners from her castle.",
+      "C. She is sent to the forest by her wicked stepmother and finds their home.",
+      "D. She wanders into the forest out of curiosity and stumbles upon their cottage."
+    ],
+    "answer": "C",
+    "task_type": "Action Reasoning",
+    "question_id": "786-1",
+    "duration": "long"
+  },
+  {
+    "video_id": "786",
+    "youtube_id": "P69idA8JO98",
+    "url": "https://www.youtube.com/watch?v=P69idA8JO98",
+    "question": "What is the Queen's fate in the video?",
+    "options": [
+      "A. She is trapped on a cliff and meets her end by a falling boulder.",
+      "B. She is overthrown by the miners and banished from the kingdom.",
+      "C. She is forgiven by Snow White and reforms her ways.",
+      "D. She flees the kingdom to seek power elsewhere."
+    ],
+    "answer": "A",
+    "task_type": "Action Recognition",
+    "question_id": "786-2",
+    "duration": "long"
+  },
+  {
+    "video_id": "786",
+    "youtube_id": "P69idA8JO98",
+    "url": "https://www.youtube.com/watch?v=P69idA8JO98",
+    "question": "What inference can be made about the actress on her interactions in the video?",
+    "options": [
+      "A. She won the friendship of the miners and the creatures of the forest.",
+      "B. She was a skilled princess who fights for justice.",
+      "C. She has magic that helps her control nature.",
+      "D. She was a musician known throughout the country."
+    ],
+    "answer": "A",
+    "task_type": "Action Reasoning",
+    "question_id": "786-3",
+    "duration": "long"
+  },
+  {
+    "video_id": "896",
+    "youtube_id": "xIWaK92gRlo",
+    "url": "https://www.youtube.com/watch?v=xIWaK92gRlo",
+    "question": "What sets apart the third set of stickers from the other two?",
+    "options": [
+      "A. The third set of stickers are animal prints.",
+      "B. The third set of stickers is with botanical patterns.",
+      "C. The third set of stickers has no color.",
+      "D. The third set of stickers is Inexpensive."
+    ],
+    "answer": "C",
+    "task_type": "Object Reasoning",
+    "question_id": "896-1",
+    "duration": "long"
+  },
+  {
+    "video_id": "896",
+    "youtube_id": "xIWaK92gRlo",
+    "url": "https://www.youtube.com/watch?v=xIWaK92gRlo",
+    "question": "What is the proper sequence for the following items used in this video?\n(a) Stickers.\n(b) Watercolor pencils.\n(c) Gems.\n(d) Glue paper.",
+    "options": [
+      "A. (a)(c)(b)(d).",
+      "B. (d)(b)(a)(c).",
+      "C. (b)(a)(d)(c).",
+      "D. (d)(a)(c)(b)."
+    ],
+    "answer": "D",
+    "task_type": "Temporal Reasoning",
+    "question_id": "896-2",
+    "duration": "long"
+  },
+  {
+    "video_id": "896",
+    "youtube_id": "xIWaK92gRlo",
+    "url": "https://www.youtube.com/watch?v=xIWaK92gRlo",
+    "question": "What is captured in this video?",
+    "options": [
+      "A. Crafting Tutorial.",
+      "B. Introduction to shopping for handmade products.",
+      "C. Sticker Share.",
+      "D. Individual handmade works are sold online."
+    ],
+    "answer": "B",
+    "task_type": "Information Synopsis",
+    "question_id": "896-3",
+    "duration": "long"
+  },
+  {
+    "video_id": "699",
+    "youtube_id": "I2dv1jNM7gM",
+    "url": "https://www.youtube.com/watch?v=I2dv1jNM7gM",
+    "question": "In line with the video evidence, what does the team do in the first story?",
+    "options": [
+      "A. They are fighting with each other.",
+      "B. They are watching a movie.",
+      "C. They are filming.",
+      "D. They are saving a mermaid."
+    ],
+    "answer": "C",
+    "task_type": "Action Recognition",
+    "question_id": "699-1",
+    "duration": "long"
+  },
+  {
+    "video_id": "699",
+    "youtube_id": "I2dv1jNM7gM",
+    "url": "https://www.youtube.com/watch?v=I2dv1jNM7gM",
+    "question": "In accordance with the video footage, who protects the mermaid?",
+    "options": [
+      "A. The shark.",
+      "B. The dog.",
+      "C. The panda.",
+      "D. Herself."
+    ],
+    "answer": "A",
+    "task_type": "Object Recognition",
+    "question_id": "699-2",
+    "duration": "long"
+  },
+  {
+    "video_id": "699",
+    "youtube_id": "I2dv1jNM7gM",
+    "url": "https://www.youtube.com/watch?v=I2dv1jNM7gM",
+    "question": "What happens when the figures in the video are electrocuted?",
+    "options": [
+      "A. They become abnormal.",
+      "B. They lose their memory.",
+      "C. They become friendly.",
+      "D. They yearn for a family."
+    ],
+    "answer": "B",
+    "task_type": "Action Recognition",
+    "question_id": "699-3",
+    "duration": "long"
+  },
+  {
+    "video_id": "636",
+    "youtube_id": "9bbWYVrQgZ8",
+    "url": "https://www.youtube.com/watch?v=9bbWYVrQgZ8",
+    "question": "Which of the following best summarizes the main concern of those who advocate for a reduction in the balance sheet in the video?",
+    "options": [
+      "A. The risk of deflation and economic stagnation due to reduced liquidity in the financial system.",
+      "B. The potential for asset bubbles and financial instability driven by excessive risk-taking.",
+      "C. The limitations it imposes on the Fed's ability to respond effectively to future economic crises.",
+      "D. The negative impact on smaller businesses and income inequality due to the focus on supporting large corporations."
+    ],
+    "answer": "B",
+    "task_type": "Information Synopsis",
+    "question_id": "636-1",
+    "duration": "long"
+  },
+  {
+    "video_id": "636",
+    "youtube_id": "9bbWYVrQgZ8",
+    "url": "https://www.youtube.com/watch?v=9bbWYVrQgZ8",
+    "question": "According to the video, what is one reason why the relationship between inflation and wage inflation has weakened in recent decades?",
+    "options": [
+      "A. Increased automation has led to a decline in the demand for labor.",
+      "B. Government policies have encouraged companies to suppress wages.",
+      "C. Technological advances have increased worker productivity, reducing the need for wage increases.",
+      "D. The rise of globalization and outsourcing has reduced the bargaining power of workers."
+    ],
+    "answer": "D",
+    "task_type": "Object Reasoning",
+    "question_id": "636-2",
+    "duration": "long"
+  },
+  {
+    "video_id": "636",
+    "youtube_id": "9bbWYVrQgZ8",
+    "url": "https://www.youtube.com/watch?v=9bbWYVrQgZ8",
+    "question": "What is the main focus of this video?",
+    "options": [
+      "A. The potential consequences of the Federal Reserve's expansionary monetary policy, particularly on inflation.",
+      "B. The effectiveness of various economic models, such as the Phillips Curve, in predicting and managing inflation.",
+      "C. The history and evolution of the Federal Reserve and its role in the US economy.",
+      "D. The impact of the COVID-19 pandemic on global supply chains and consumer spending habits."
+    ],
+    "answer": "A",
+    "task_type": "Information Synopsis",
+    "question_id": "636-3",
+    "duration": "long"
+  },
+  {
+    "video_id": "624",
+    "youtube_id": "mAwgdX5VxGc",
+    "url": "https://www.youtube.com/watch?v=mAwgdX5VxGc",
+    "question": "What is the speaker's opinion on reversing type 2 diabetes?",
+    "options": [
+      "A. It can be treated through insulin therapy.",
+      "B. It can be treated through surgical interventions.",
+      "C. It can be treated naturally.",
+      "D. Cannot be inferred."
+    ],
+    "answer": "C",
+    "task_type": "Object Reasoning",
+    "question_id": "624-1",
+    "duration": "long"
+  },
+  {
+    "video_id": "624",
+    "youtube_id": "mAwgdX5VxGc",
+    "url": "https://www.youtube.com/watch?v=mAwgdX5VxGc",
+    "question": "What is the order in which the following is introduced in the video?\n\u2460 Insulin Resistance Explained.\n\u2461 Case studies.\n\u2462 How to Reverse Type 2 Diabetes.",
+    "options": [
+      "A. \u2460\u2461\u2462.",
+      "B. \u2460\u2462\u2461.",
+      "C. \u2462\u2460\u2461.",
+      "D. \u2460\u2462\u2461."
+    ],
+    "answer": "D",
+    "task_type": "Temporal Reasoning",
+    "question_id": "624-2",
+    "duration": "long"
+  },
+  {
+    "video_id": "624",
+    "youtube_id": "mAwgdX5VxGc",
+    "url": "https://www.youtube.com/watch?v=mAwgdX5VxGc",
+    "question": "What treatment is universally implemented in all the case studies featured in the video?",
+    "options": [
+      "A. Use medication therapy.",
+      "B. Undergo surgical treatment.",
+      "C. Take dietary management.",
+      "D. Implement physical therapy."
+    ],
+    "answer": "C",
+    "task_type": "Object Reasoning",
+    "question_id": "624-3",
+    "duration": "long"
+  },
+  {
+    "video_id": "001",
+    "youtube_id": "fFjv93ACGo8",
+    "url": "https://www.youtube.com/watch?v=fFjv93ACGo8",
+    "question": "When demonstrating the Germany modern Christmas tree is initially decorated with apples, candles and berries, which kind of the decoration has the largest number?",
+    "options": [
+      "A. Apples.",
+      "B. Candles.",
+      "C. Berries.",
+      "D. The three kinds are of the same number."
+    ],
+    "answer": "C",
+    "task_type": "Counting Problem",
+    "question_id": "001-1",
+    "duration": "short"
+  },
+  {
+    "video_id": "001",
+    "youtube_id": "fFjv93ACGo8",
+    "url": "https://www.youtube.com/watch?v=fFjv93ACGo8",
+    "question": "What is the genre of this video?",
+    "options": [
+      "A. It is a news report that introduces the history behind Christmas decorations.",
+      "B. It is a documentary on the evolution of Christmas holiday recipes.",
+      "C. It is a travel vlog exploring Christmas markets around the world.",
+      "D. It is a tutorial on DIY Christmas ornament crafting."
+    ],
+    "answer": "A",
+    "task_type": "Information Synopsis",
+    "question_id": "001-2",
+    "duration": "short"
+  },
+  {
+    "video_id": "001",
+    "youtube_id": "fFjv93ACGo8",
+    "url": "https://www.youtube.com/watch?v=fFjv93ACGo8",
+    "question": "How many red socks are above the fireplace at the end of this video?",
+    "options": [
+      "A. 1.",
+      "B. 4.",
+      "C. 2.",
+      "D. 3."
+    ],
+    "answer": "D",
+    "task_type": "Counting Problem",
+    "question_id": "001-3",
+    "duration": "short"
+  }
+]
