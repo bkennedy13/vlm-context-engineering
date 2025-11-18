@@ -13,8 +13,6 @@ We're building on the [AVAS (Agentic Video Analytics System)](https://arxiv.org/
 | Metric | L1 (Baseline) | L2 (Semantic) | L3 (Events) | L4 (Tri-view) | L5 (Agentic) | Best |
 |--------|---------------|---------------|-------------|---------------|--------------|------|
 | **Overall Accuracy** | 52.0% | 59.3% | 54.7% | 59.3% | 51.3% | **L2/L4: 59.3%** |
-| Avg Retrieval Time | 8.89s | 9.34s | 9.13s | 9.12s* | 31.61s* | **L1: 8.89s** |
-| Avg Inference Time | 2.11s | 4.45s | 12.65s | 3.32s | 2.72s | **L1: 2.11s** |
 | **Total Time/Question** | 11.0s | 13.8s | 21.8s | 12.4s | 34.3s | **L1: 11.0s** |
 
 *Includes preprocessing time (tri-view embedding generation)
